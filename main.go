@@ -5,10 +5,9 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	pb "github.com/Emixam23/GKE-gRPC-Service-Ingress/interface"
 	"github.com/golang/glog"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
-	stacktracer "gitlab.com/eyes-eyes/internals-stacktracer"
-	pb "gitlab.com/eyesbank/ingresstestgkegrpc/interface"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
@@ -52,17 +51,11 @@ func main() {
 		// Profiler initialization, best done as early as possible.
 		if err := profiler.Start(profiler.Config{
 			Service:   strings.ToLower(service),
-			ProjectID: "<PROJECT_ID>",
+			ProjectID: "eyesapp",
 		}); err != nil {
 			log.Fatalf("Unable to start the profiler: [%s].\n", err.Error())
 		}
 	}
-
-	// Setting the service name
-	stacktracer.SetServiceName(SERVICE)
-
-	// Initializing the HTTP errors handling
-	runtime.HTTPError = stacktracer.DefaultHTTPError
 
 	// Just some logs
 	log.Println("Try running service ...")
