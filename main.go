@@ -4,33 +4,42 @@ import (
 	"cloud.google.com/go/profiler"
 	"context"
 	"encoding/json"
+	"flag"
 	"fmt"
 	pb "github.com/Emixam23/GKE-gRPC-Service-Ingress/interface"
 	"github.com/golang/glog"
 	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"google.golang.org/grpc/codes"
+	healthpb "google.golang.org/grpc/health/grpc_health_v1"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
+	"log"
+	"math/rand"
+	"net"
 	"os"
 	"strconv"
 	"strings"
+	"sync"
 	"time"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-	"log"
-	"net"
 	"net/http"
 )
 
-const SERVICE = "test-service"
+const SERVICE = "GKE-gRPC-Service"
+
+var (
+	unhealthyproability = flag.Int("unhealthyproability", 0, "percentage chance the service is unhealthy (0->100)")
+)
 
 // main is the starting point of the current micro service.
 func main() {
 
 	// Initialising the service server
-	serviceServer := &TestServiceServer{
-
+	serviceServer := &GKEgRPCServiceServer{
+		mu:        sync.Mutex{},
+		statusMap: map[string]healthpb.HealthCheckResponse_ServingStatus{},
 	}
 
 	// Program arguments
@@ -75,7 +84,7 @@ func main() {
 // Info & Arguments
 //
 
-func (s *TestServiceServer) GetProgramArguments() (environment string, namespace string, gRPCPort uint, RESTPort uint) {
+func (s *GKEgRPCServiceServer) GetProgramArguments() (environment string, namespace string, gRPCPort uint, RESTPort uint) {
 
 	args := os.Args[1:]
 	if len(os.Args) > 1 {
@@ -142,7 +151,6 @@ func (s *TestServiceServer) GetProgramArguments() (environment string, namespace
 		log.Fatalf("Invalid ports provided [%d/%d]. They must be different.\n", gRPCPort, RESTPort)
 	}
 
-
 	log.Printf("ENVIRONMENT=ingresstest%s\n", environment)
 	log.Printf("NAMESPACE=default%s\n", namespace)
 	log.Printf("GRPC_PORT=%d\n", gRPCPort)
@@ -155,7 +163,7 @@ func (s *TestServiceServer) GetProgramArguments() (environment string, namespace
 // gRPC
 //
 
-func (s *TestServiceServer) RunAsGRPCServer(gRPCAddr string) {
+func (s *GKEgRPCServiceServer) RunAsGRPCServer(gRPCAddr string) {
 
 	lis, err := net.Listen("tcp", gRPCAddr) // gRPC
 	if err != nil {
@@ -165,6 +173,8 @@ func (s *TestServiceServer) RunAsGRPCServer(gRPCAddr string) {
 
 	server := grpc.NewServer(s.withServerUnaryInterceptor())
 	pb.RegisterGKEgRPCServiceServer(server, s)
+	healthpb.RegisterHealthServer(server, s)
+
 	// Register reflection service on gRPC server.
 	reflection.Register(server)
 
@@ -173,12 +183,12 @@ func (s *TestServiceServer) RunAsGRPCServer(gRPCAddr string) {
 	}
 }
 
-func (s *TestServiceServer) withServerUnaryInterceptor() grpc.ServerOption {
+func (s *GKEgRPCServiceServer) withServerUnaryInterceptor() grpc.ServerOption {
 	return grpc.UnaryInterceptor(s.serverInterceptor)
 }
 
 // Authorization unary interceptor function to handle authorize per RPC call
-func (s *TestServiceServer) serverInterceptor(ctx context.Context,
+func (s *GKEgRPCServiceServer) serverInterceptor(ctx context.Context,
 	req interface{},
 	info *grpc.UnaryServerInfo,
 	handler grpc.UnaryHandler) (interface{}, error) {
@@ -216,7 +226,7 @@ func (s *TestServiceServer) serverInterceptor(ctx context.Context,
 // gRPC Gateway
 //
 
-func (s *TestServiceServer) RunAsGRPCGatewayServer(gRPCAddr string, RESTAddr string) error {
+func (s *GKEgRPCServiceServer) RunAsGRPCGatewayServer(gRPCAddr string, RESTAddr string) error {
 
 	opts := []grpc.DialOption{grpc.WithInsecure()}
 	mux := runtime.NewServeMux()
@@ -234,15 +244,41 @@ func (s *TestServiceServer) RunAsGRPCGatewayServer(gRPCAddr string, RESTAddr str
 // Implementation
 //
 
-// TestServiceServer is used to implement TestServiceServer.TestServiceServer.
-type TestServiceServer struct {
-
+// GKEgRPCServiceServer is used to implement GKEgRPCServiceServer.GKEgRPCServiceServer.
+type GKEgRPCServiceServer struct {
+	mu sync.Mutex
+	// statusMap stores the serving status of the services this Server monitors.
+	statusMap map[string]healthpb.HealthCheckResponse_ServingStatus
 }
 
-func (s *TestServiceServer) HealthCheck(ctx context.Context, in *pb.HealthCheckRequest) (*pb.HealthCheckResponse, error) {
-	return &pb.HealthCheckResponse{}, nil
+func (s *GKEgRPCServiceServer) HelloWorld(ctx context.Context, in *pb.HelloWorldRequest) (*pb.HelloWorldResponse, error) {
+	return &pb.HelloWorldResponse{Content: fmt.Sprintf("HelloWorld to you %s!", in.Name)}, nil
 }
 
-func (s *TestServiceServer) HelloWorld(ctx context.Context, in *pb.HelloWorldRequest) (*pb.HelloWorldResponse, error) {
-	return &pb.HelloWorldResponse{Content:fmt.Sprintf("HelloWorld to you %s!", in.Name)}, nil
+func (s *GKEgRPCServiceServer) Check(ctx context.Context, in *healthpb.HealthCheckRequest) (*healthpb.HealthCheckResponse, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+
+	if in.Service == "" {
+		// return overall status
+		return &healthpb.HealthCheckResponse{Status: healthpb.HealthCheckResponse_SERVING}, nil
+	}
+
+	r := rand.Intn(100)
+	if r <= *unhealthyproability {
+		s.statusMap["echo.EchoServer"] = healthpb.HealthCheckResponse_NOT_SERVING
+	} else {
+		s.statusMap["echo.EchoServer"] = healthpb.HealthCheckResponse_SERVING
+	}
+	st, ok := s.statusMap[in.Service]
+	if !ok {
+		// https://github.com/grpc/grpc/blob/master/doc/health-checking.md
+		// "If the service name is not registered, the server returns a NOT_FOUND GRPC status."
+		return &healthpb.HealthCheckResponse{Status: healthpb.HealthCheckResponse_UNKNOWN}, status.Error(codes.NotFound, "unknown service")
+	}
+	return &healthpb.HealthCheckResponse{Status: st}, nil
+}
+
+func (s *GKEgRPCServiceServer) Watch(in *healthpb.HealthCheckRequest, srv healthpb.Health_WatchServer) error {
+	return status.Error(codes.Unimplemented, "Watch is not implemented")
 }

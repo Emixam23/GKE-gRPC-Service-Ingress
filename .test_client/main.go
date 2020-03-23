@@ -4,6 +4,7 @@ import (
 	"context"
 	pb "github.com/Emixam23/GKE-gRPC-Service-Ingress/interface"
 	"google.golang.org/grpc"
+	healthpb "google.golang.org/grpc/health/grpc_health_v1"
 	"google.golang.org/grpc/status"
 	"log"
 	"os"
@@ -11,14 +12,14 @@ import (
 	"time"
 )
 
-// TestServiceClient is used to test
-type TestServiceClient struct {
+// GKEgRPCServiceClient is used to test
+type GKEgRPCServiceClient struct {
 
 }
 
 func main() {
 
-	testServiceClient := TestServiceClient{}
+	testServiceClient := GKEgRPCServiceClient{}
 
 	serviceEndpoint := testServiceClient.GetProgramArguments()
 
@@ -31,14 +32,14 @@ func main() {
 
 	log.Println()
 	log.Println("---- TEST ----")
-	testServiceClient.HealthCheck(service)
+	testServiceClient.HealthCheck(serviceConn)
 	testServiceClient.HelloWorld(service, "Emixam23")
 	log.Println("---- TEST ----")
 	log.Println()
 
 }
 
-func (s *TestServiceClient) GetProgramArguments() (serviceEndpoint string) {
+func (s *GKEgRPCServiceClient) GetProgramArguments() (serviceEndpoint string) {
 
 	args := os.Args[1:]
 	if len(os.Args) > 1 {
@@ -71,7 +72,7 @@ func (s *TestServiceClient) GetProgramArguments() (serviceEndpoint string) {
 	return serviceEndpoint
 }
 
-func (s *TestServiceClient) HelloWorld(conn pb.GKEgRPCServiceClient, name string) {
+func (s *GKEgRPCServiceClient) HelloWorld(conn pb.GKEgRPCServiceClient, name string) {
 
 	// Registering the instance to the dispatcher
 	ctx, _ := context.WithTimeout(context.Background(), 2*time.Second)
@@ -86,15 +87,18 @@ func (s *TestServiceClient) HelloWorld(conn pb.GKEgRPCServiceClient, name string
 
 }
 
-func (s *TestServiceClient) HealthCheck(conn pb.GKEgRPCServiceClient) {
+func (s *GKEgRPCServiceClient) HealthCheck(conn *grpc.ClientConn) {
 
 	// Registering the instance to the dispatcher
 	ctx, _ := context.WithTimeout(context.Background(), 2*time.Second)
-	if _, err := conn.HealthCheck(ctx, &pb.HealthCheckRequest{}); err != nil {
-		s, _ := status.FromError(err)
-		log.Fatalln(s.Message())
-	} else {
-		log.Println("200 OK")
+	resp, err := healthpb.NewHealthClient(conn).Check(ctx, &healthpb.HealthCheckRequest{Service: "echo.EchoServer"})
+	if err != nil {
+		log.Fatalf("HealthCheck failed %+v\n", err)
 	}
+
+	if resp.GetStatus() != healthpb.HealthCheckResponse_SERVING {
+		log.Fatalf("service not in serving state: %s\n", resp.GetStatus().String())
+	}
+	log.Printf("RPC HealthChekStatus:%v\n", resp.GetStatus())
 
 }
