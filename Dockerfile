@@ -6,24 +6,10 @@
 FROM golang:1.11 as builder
 
 # Add Maintainer Info
-LABEL maintainer="Maxime GUITTET <maxime.guittet.fr@gmail.com>"
-
-# Creating ssh root folder
-RUN mkdir /root/.ssh/
-
-# SSH key from ARG
-# ARG SSH_PRIVATE_KEY
-COPY .ssh/id_rsa /root/.ssh/id_rsa
+LABEL maintainer="Maxime GUITTET <maxime.guittet@say-eyes.com>"
 
 # Setting env variable
 ENV GO111MODULE=on
-
-# chmod + gitlab from HTTPS to SSH
-RUN chmod 600 /root/.ssh/id_rsa && git config --global url."git@gitlab.com:".insteadOf https://gitlab.com/
-
-# make sure your domain is accepted
-RUN touch /root/.ssh/known_hosts
-RUN ssh-keyscan gitlab.com >> /root/.ssh/known_hosts
 
 # Creating/Cd work directory
 WORKDIR /service
