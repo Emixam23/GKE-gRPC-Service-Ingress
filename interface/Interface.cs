@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace TestService {
+namespace GKEgRPCService {
 
   /// <summary>Holder for reflection information generated from interface.proto</summary>
   public static partial class InterfaceReflection {
@@ -24,23 +24,24 @@ namespace TestService {
     static InterfaceReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "Cg9pbnRlcmZhY2UucHJvdG8SC1Rlc3RTZXJ2aWNlGhxnb29nbGUvYXBpL2Fu",
-            "bm90YXRpb25zLnByb3RvIhQKEkhlYWx0aENoZWNrUmVxdWVzdCIVChNIZWFs",
-            "dGhDaGVja1Jlc3BvbnNlIiEKEUhlbGxvV29ybGRSZXF1ZXN0EgwKBE5hbWUY",
-            "ASABKAkiJQoSSGVsbG9Xb3JsZFJlc3BvbnNlEg8KB0NvbnRlbnQYASABKAky",
-            "6AEKC1Rlc3RTZXJ2aWNlEmwKC0hlYWx0aENoZWNrEh8uVGVzdFNlcnZpY2Uu",
-            "SGVhbHRoQ2hlY2tSZXF1ZXN0GiAuVGVzdFNlcnZpY2UuSGVhbHRoQ2hlY2tS",
-            "ZXNwb25zZSIagtPkkwIUEhIvcmVzdC9oZWFsdGhfY2hlY2sSawoKSGVsbG9X",
-            "b3JsZBIeLlRlc3RTZXJ2aWNlLkhlbGxvV29ybGRSZXF1ZXN0Gh8uVGVzdFNl",
-            "cnZpY2UuSGVsbG9Xb3JsZFJlc3BvbnNlIhyC0+STAhYiES9yZXN0L2hlbGxv",
-            "X3dvcmxkOgEqQg5aDHRlc3Rfc2VydmljZWIGcHJvdG8z"));
+            "Cg9pbnRlcmZhY2UucHJvdG8SDkdLRWdSUENTZXJ2aWNlGhxnb29nbGUvYXBp",
+            "L2Fubm90YXRpb25zLnByb3RvIhQKEkhlYWx0aENoZWNrUmVxdWVzdCIVChNI",
+            "ZWFsdGhDaGVja1Jlc3BvbnNlIiEKEUhlbGxvV29ybGRSZXF1ZXN0EgwKBE5h",
+            "bWUYASABKAkiJQoSSGVsbG9Xb3JsZFJlc3BvbnNlEg8KB0NvbnRlbnQYASAB",
+            "KAky9wEKDkdLRWdSUENTZXJ2aWNlEnIKC0hlYWx0aENoZWNrEiIuR0tFZ1JQ",
+            "Q1NlcnZpY2UuSGVhbHRoQ2hlY2tSZXF1ZXN0GiMuR0tFZ1JQQ1NlcnZpY2Uu",
+            "SGVhbHRoQ2hlY2tSZXNwb25zZSIagtPkkwIUEhIvcmVzdC9oZWFsdGhfY2hl",
+            "Y2sScQoKSGVsbG9Xb3JsZBIhLkdLRWdSUENTZXJ2aWNlLkhlbGxvV29ybGRS",
+            "ZXF1ZXN0GiIuR0tFZ1JQQ1NlcnZpY2UuSGVsbG9Xb3JsZFJlc3BvbnNlIhyC",
+            "0+STAhYiES9yZXN0L2hlbGxvX3dvcmxkOgEqQhJaEGdrZV9ncnBjX3NlcnZp",
+            "Y2ViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::TestService.HealthCheckRequest), global::TestService.HealthCheckRequest.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::TestService.HealthCheckResponse), global::TestService.HealthCheckResponse.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::TestService.HelloWorldRequest), global::TestService.HelloWorldRequest.Parser, new[]{ "Name" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::TestService.HelloWorldResponse), global::TestService.HelloWorldResponse.Parser, new[]{ "Content" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::GKEgRPCService.HealthCheckRequest), global::GKEgRPCService.HealthCheckRequest.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GKEgRPCService.HealthCheckResponse), global::GKEgRPCService.HealthCheckResponse.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GKEgRPCService.HelloWorldRequest), global::GKEgRPCService.HelloWorldRequest.Parser, new[]{ "Name" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GKEgRPCService.HelloWorldResponse), global::GKEgRPCService.HelloWorldResponse.Parser, new[]{ "Content" }, null, null, null)
           }));
     }
     #endregion
@@ -55,7 +56,7 @@ namespace TestService {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::TestService.InterfaceReflection.Descriptor.MessageTypes[0]; }
+      get { return global::GKEgRPCService.InterfaceReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -156,7 +157,7 @@ namespace TestService {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::TestService.InterfaceReflection.Descriptor.MessageTypes[1]; }
+      get { return global::GKEgRPCService.InterfaceReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -257,7 +258,7 @@ namespace TestService {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::TestService.InterfaceReflection.Descriptor.MessageTypes[2]; }
+      get { return global::GKEgRPCService.InterfaceReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -386,7 +387,7 @@ namespace TestService {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::TestService.InterfaceReflection.Descriptor.MessageTypes[3]; }
+      get { return global::GKEgRPCService.InterfaceReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

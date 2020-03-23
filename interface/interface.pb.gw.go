@@ -2,11 +2,11 @@
 // source: interface.proto
 
 /*
-Package test_service is a reverse proxy.
+Package gke_grpc_service is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package test_service
+package gke_grpc_service
 
 import (
 	"context"
@@ -28,7 +28,7 @@ var _ status.Status
 var _ = runtime.String
 var _ = utilities.NewDoubleArray
 
-func request_TestService_HealthCheck_0(ctx context.Context, marshaler runtime.Marshaler, client TestServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_GKEgRPCService_HealthCheck_0(ctx context.Context, marshaler runtime.Marshaler, client GKEgRPCServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq HealthCheckRequest
 	var metadata runtime.ServerMetadata
 
@@ -37,7 +37,7 @@ func request_TestService_HealthCheck_0(ctx context.Context, marshaler runtime.Ma
 
 }
 
-func local_request_TestService_HealthCheck_0(ctx context.Context, marshaler runtime.Marshaler, server TestServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_GKEgRPCService_HealthCheck_0(ctx context.Context, marshaler runtime.Marshaler, server GKEgRPCServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq HealthCheckRequest
 	var metadata runtime.ServerMetadata
 
@@ -46,7 +46,7 @@ func local_request_TestService_HealthCheck_0(ctx context.Context, marshaler runt
 
 }
 
-func request_TestService_HelloWorld_0(ctx context.Context, marshaler runtime.Marshaler, client TestServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func request_GKEgRPCService_HelloWorld_0(ctx context.Context, marshaler runtime.Marshaler, client GKEgRPCServiceClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq HelloWorldRequest
 	var metadata runtime.ServerMetadata
 
@@ -63,7 +63,7 @@ func request_TestService_HelloWorld_0(ctx context.Context, marshaler runtime.Mar
 
 }
 
-func local_request_TestService_HelloWorld_0(ctx context.Context, marshaler runtime.Marshaler, server TestServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+func local_request_GKEgRPCService_HelloWorld_0(ctx context.Context, marshaler runtime.Marshaler, server GKEgRPCServiceServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq HelloWorldRequest
 	var metadata runtime.ServerMetadata
 
@@ -80,12 +80,12 @@ func local_request_TestService_HelloWorld_0(ctx context.Context, marshaler runti
 
 }
 
-// RegisterTestServiceHandlerServer registers the http handlers for service TestService to "mux".
-// UnaryRPC     :call TestServiceServer directly.
+// RegisterGKEgRPCServiceHandlerServer registers the http handlers for service GKEgRPCService to "mux".
+// UnaryRPC     :call GKEgRPCServiceServer directly.
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
-func RegisterTestServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux, server TestServiceServer) error {
+func RegisterGKEgRPCServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux, server GKEgRPCServiceServer) error {
 
-	mux.Handle("GET", pattern_TestService_HealthCheck_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_GKEgRPCService_HealthCheck_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -94,18 +94,18 @@ func RegisterTestServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_TestService_HealthCheck_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_GKEgRPCService_HealthCheck_0(rctx, inboundMarshaler, server, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_TestService_HealthCheck_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_GKEgRPCService_HealthCheck_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_TestService_HelloWorld_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_GKEgRPCService_HelloWorld_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -114,23 +114,23 @@ func RegisterTestServiceHandlerServer(ctx context.Context, mux *runtime.ServeMux
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := local_request_TestService_HelloWorld_0(rctx, inboundMarshaler, server, req, pathParams)
+		resp, md, err := local_request_GKEgRPCService_HelloWorld_0(rctx, inboundMarshaler, server, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_TestService_HelloWorld_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_GKEgRPCService_HelloWorld_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
 	return nil
 }
 
-// RegisterTestServiceHandlerFromEndpoint is same as RegisterTestServiceHandler but
+// RegisterGKEgRPCServiceHandlerFromEndpoint is same as RegisterGKEgRPCServiceHandler but
 // automatically dials to "endpoint" and closes the connection when "ctx" gets done.
-func RegisterTestServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
+func RegisterGKEgRPCServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.ServeMux, endpoint string, opts []grpc.DialOption) (err error) {
 	conn, err := grpc.Dial(endpoint, opts...)
 	if err != nil {
 		return err
@@ -150,23 +150,23 @@ func RegisterTestServiceHandlerFromEndpoint(ctx context.Context, mux *runtime.Se
 		}()
 	}()
 
-	return RegisterTestServiceHandler(ctx, mux, conn)
+	return RegisterGKEgRPCServiceHandler(ctx, mux, conn)
 }
 
-// RegisterTestServiceHandler registers the http handlers for service TestService to "mux".
+// RegisterGKEgRPCServiceHandler registers the http handlers for service GKEgRPCService to "mux".
 // The handlers forward requests to the grpc endpoint over "conn".
-func RegisterTestServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-	return RegisterTestServiceHandlerClient(ctx, mux, NewTestServiceClient(conn))
+func RegisterGKEgRPCServiceHandler(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
+	return RegisterGKEgRPCServiceHandlerClient(ctx, mux, NewGKEgRPCServiceClient(conn))
 }
 
-// RegisterTestServiceHandlerClient registers the http handlers for service TestService
-// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "TestServiceClient".
-// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "TestServiceClient"
+// RegisterGKEgRPCServiceHandlerClient registers the http handlers for service GKEgRPCService
+// to "mux". The handlers forward requests to the grpc endpoint over the given implementation of "GKEgRPCServiceClient".
+// Note: the gRPC framework executes interceptors within the gRPC handler. If the passed in "GKEgRPCServiceClient"
 // doesn't go through the normal gRPC flow (creating a gRPC client etc.) then it will be up to the passed in
-// "TestServiceClient" to call the correct interceptors.
-func RegisterTestServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client TestServiceClient) error {
+// "GKEgRPCServiceClient" to call the correct interceptors.
+func RegisterGKEgRPCServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux, client GKEgRPCServiceClient) error {
 
-	mux.Handle("GET", pattern_TestService_HealthCheck_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("GET", pattern_GKEgRPCService_HealthCheck_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -175,18 +175,18 @@ func RegisterTestServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_TestService_HealthCheck_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_GKEgRPCService_HealthCheck_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_TestService_HealthCheck_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_GKEgRPCService_HealthCheck_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
-	mux.Handle("POST", pattern_TestService_HelloWorld_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("POST", pattern_GKEgRPCService_HelloWorld_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -195,14 +195,14 @@ func RegisterTestServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
-		resp, md, err := request_TestService_HelloWorld_0(rctx, inboundMarshaler, client, req, pathParams)
+		resp, md, err := request_GKEgRPCService_HelloWorld_0(rctx, inboundMarshaler, client, req, pathParams)
 		ctx = runtime.NewServerMetadataContext(ctx, md)
 		if err != nil {
 			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
 			return
 		}
 
-		forward_TestService_HelloWorld_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+		forward_GKEgRPCService_HelloWorld_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -210,13 +210,13 @@ func RegisterTestServiceHandlerClient(ctx context.Context, mux *runtime.ServeMux
 }
 
 var (
-	pattern_TestService_HealthCheck_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"rest", "health_check"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_GKEgRPCService_HealthCheck_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"rest", "health_check"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_TestService_HelloWorld_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"rest", "hello_world"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_GKEgRPCService_HelloWorld_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"rest", "hello_world"}, "", runtime.AssumeColonVerbOpt(true)))
 )
 
 var (
-	forward_TestService_HealthCheck_0 = runtime.ForwardResponseMessage
+	forward_GKEgRPCService_HealthCheck_0 = runtime.ForwardResponseMessage
 
-	forward_TestService_HelloWorld_0 = runtime.ForwardResponseMessage
+	forward_GKEgRPCService_HelloWorld_0 = runtime.ForwardResponseMessage
 )

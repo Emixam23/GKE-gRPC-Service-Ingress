@@ -19,21 +19,21 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: ingresstestgkegrpc
+  name: GKEgRPCService
   namespace: default
 spec:
   replicas: 1
   selector:
     matchLabels:
-      run: ingresstestgkegrpc
+      run: GKEgRPCService
   template:
     metadata:
       labels:
-        run: ingresstestgkegrpc
+        run: GKEgRPCService
     spec:
       containers:
-        - name: ingresstestgkegrpc
-          image: gcr.io/<PROJECT_ID>/ingresstestgkegrpc:latest
+        - name: GKEgRPCService
+          image: gcr.io/<PROJECT_ID>/GKEgRPCService:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
@@ -44,12 +44,12 @@ kind: Service
 metadata:
   annotations:
     cloud.google.com/app-protocols: '{"grpc":"HTTP2"}'
-  name: ingresstestgkegrpc
+  name: GKEgRPCService
   namespace: default
 spec:
   type: NodePort
   selector:
-    run: ingresstestgkegrpc
+    run: GKEgRPCService
   ports:
     # Port that accepts gRPC and JSON/HTTP2 requests over HTTP.
     - port: 8080
@@ -65,7 +65,7 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: ingresstestgkegrpc-ingress
+  name: GKEgRPCService-ingress
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
@@ -75,15 +75,15 @@ spec:
   rules:
     - http:
         paths:
-          - path: /*
+          - path: /GKEgRPCService.GKEgRPCService/*
             backend:
-              serviceName: ingresstestgkegrpc
+              serviceName: GKEgRPCService
               servicePort: 8080
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: ingresstestgkegrpc-gateway-ingress
+  name: GKEgRPCService-gateway-ingress
   annotations:
     kubernetes.io/ingress.class: nginx
 spec:
@@ -92,5 +92,5 @@ spec:
         paths:
           - path: /rest/*
             backend:
-              serviceName: ingresstestgkegrpc
+              serviceName: GKEgRPCService
               servicePort: 8081

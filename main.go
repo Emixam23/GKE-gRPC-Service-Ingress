@@ -51,7 +51,7 @@ func main() {
 		// Profiler initialization, best done as early as possible.
 		if err := profiler.Start(profiler.Config{
 			Service:   strings.ToLower(service),
-			ProjectID: "eyesapp",
+			ProjectID: "<PROJECT_ID>",
 		}); err != nil {
 			log.Fatalf("Unable to start the profiler: [%s].\n", err.Error())
 		}

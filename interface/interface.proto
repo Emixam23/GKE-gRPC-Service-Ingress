@@ -1,19 +1,19 @@
 syntax = "proto3";
 
-package TestService;
+package GKEgRPCService;
 
 import "google/api/annotations.proto";
 
-option go_package = "test_service";
+option go_package = "gke_grpc_service";
 
 //
 // The Service definition.
 //
 
-service TestService {
+service GKEgRPCService {
 
-    rpc HealthCheck (HealthCheckRequest) returns (HealthCheckResponse) { option (google.api.http) = { get: "/health_check" }; }
-    rpc HelloWorld (HelloWorldRequest) returns (HelloWorldResponse) { option (google.api.http) = { post: "/hello_world" body:"*" }; }
+    rpc HealthCheck (HealthCheckRequest) returns (HealthCheckResponse) { option (google.api.http) = { get: "/rest/health_check" }; }
+    rpc HelloWorld (HelloWorldRequest) returns (HelloWorldResponse) { option (google.api.http) = { post: "/rest/hello_world" body:"*" }; }
 
 }
 

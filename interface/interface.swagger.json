@@ -22,12 +22,12 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/TestServiceHealthCheckResponse"
+              "$ref": "#/definitions/GKEgRPCServiceHealthCheckResponse"
             }
           }
         },
         "tags": [
-          "TestService"
+          "GKEgRPCService"
         ]
       }
     },
@@ -38,7 +38,7 @@
           "200": {
             "description": "A successful response.",
             "schema": {
-              "$ref": "#/definitions/TestServiceHelloWorldResponse"
+              "$ref": "#/definitions/GKEgRPCServiceHelloWorldResponse"
             }
           }
         },
@@ -48,21 +48,21 @@
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/TestServiceHelloWorldRequest"
+              "$ref": "#/definitions/GKEgRPCServiceHelloWorldRequest"
             }
           }
         ],
         "tags": [
-          "TestService"
+          "GKEgRPCService"
         ]
       }
     }
   },
   "definitions": {
-    "TestServiceHealthCheckResponse": {
+    "GKEgRPCServiceHealthCheckResponse": {
       "type": "object"
     },
-    "TestServiceHelloWorldRequest": {
+    "GKEgRPCServiceHelloWorldRequest": {
       "type": "object",
       "properties": {
         "Name": {
@@ -70,7 +70,7 @@
         }
       }
     },
-    "TestServiceHelloWorldResponse": {
+    "GKEgRPCServiceHelloWorldResponse": {
       "type": "object",
       "properties": {
         "Content": {

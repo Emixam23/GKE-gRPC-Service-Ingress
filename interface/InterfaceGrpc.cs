@@ -7,117 +7,117 @@
 
 using grpc = global::Grpc.Core;
 
-namespace TestService {
-  public static partial class TestService
+namespace GKEgRPCService {
+  public static partial class GKEgRPCService
   {
-    static readonly string __ServiceName = "TestService.TestService";
+    static readonly string __ServiceName = "GKEgRPCService.GKEgRPCService";
 
-    static readonly grpc::Marshaller<global::TestService.HealthCheckRequest> __Marshaller_TestService_HealthCheckRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::TestService.HealthCheckRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::TestService.HealthCheckResponse> __Marshaller_TestService_HealthCheckResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::TestService.HealthCheckResponse.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::TestService.HelloWorldRequest> __Marshaller_TestService_HelloWorldRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::TestService.HelloWorldRequest.Parser.ParseFrom);
-    static readonly grpc::Marshaller<global::TestService.HelloWorldResponse> __Marshaller_TestService_HelloWorldResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::TestService.HelloWorldResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GKEgRPCService.HealthCheckRequest> __Marshaller_GKEgRPCService_HealthCheckRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GKEgRPCService.HealthCheckRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GKEgRPCService.HealthCheckResponse> __Marshaller_GKEgRPCService_HealthCheckResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GKEgRPCService.HealthCheckResponse.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GKEgRPCService.HelloWorldRequest> __Marshaller_GKEgRPCService_HelloWorldRequest = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GKEgRPCService.HelloWorldRequest.Parser.ParseFrom);
+    static readonly grpc::Marshaller<global::GKEgRPCService.HelloWorldResponse> __Marshaller_GKEgRPCService_HelloWorldResponse = grpc::Marshallers.Create((arg) => global::Google.Protobuf.MessageExtensions.ToByteArray(arg), global::GKEgRPCService.HelloWorldResponse.Parser.ParseFrom);
 
-    static readonly grpc::Method<global::TestService.HealthCheckRequest, global::TestService.HealthCheckResponse> __Method_HealthCheck = new grpc::Method<global::TestService.HealthCheckRequest, global::TestService.HealthCheckResponse>(
+    static readonly grpc::Method<global::GKEgRPCService.HealthCheckRequest, global::GKEgRPCService.HealthCheckResponse> __Method_HealthCheck = new grpc::Method<global::GKEgRPCService.HealthCheckRequest, global::GKEgRPCService.HealthCheckResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "HealthCheck",
-        __Marshaller_TestService_HealthCheckRequest,
-        __Marshaller_TestService_HealthCheckResponse);
+        __Marshaller_GKEgRPCService_HealthCheckRequest,
+        __Marshaller_GKEgRPCService_HealthCheckResponse);
 
-    static readonly grpc::Method<global::TestService.HelloWorldRequest, global::TestService.HelloWorldResponse> __Method_HelloWorld = new grpc::Method<global::TestService.HelloWorldRequest, global::TestService.HelloWorldResponse>(
+    static readonly grpc::Method<global::GKEgRPCService.HelloWorldRequest, global::GKEgRPCService.HelloWorldResponse> __Method_HelloWorld = new grpc::Method<global::GKEgRPCService.HelloWorldRequest, global::GKEgRPCService.HelloWorldResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
         "HelloWorld",
-        __Marshaller_TestService_HelloWorldRequest,
-        __Marshaller_TestService_HelloWorldResponse);
+        __Marshaller_GKEgRPCService_HelloWorldRequest,
+        __Marshaller_GKEgRPCService_HelloWorldResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
-      get { return global::TestService.InterfaceReflection.Descriptor.Services[0]; }
+      get { return global::GKEgRPCService.InterfaceReflection.Descriptor.Services[0]; }
     }
 
-    /// <summary>Base class for server-side implementations of TestService</summary>
-    [grpc::BindServiceMethod(typeof(TestService), "BindService")]
-    public abstract partial class TestServiceBase
+    /// <summary>Base class for server-side implementations of GKEgRPCService</summary>
+    [grpc::BindServiceMethod(typeof(GKEgRPCService), "BindService")]
+    public abstract partial class GKEgRPCServiceBase
     {
-      public virtual global::System.Threading.Tasks.Task<global::TestService.HealthCheckResponse> HealthCheck(global::TestService.HealthCheckRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::GKEgRPCService.HealthCheckResponse> HealthCheck(global::GKEgRPCService.HealthCheckRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
-      public virtual global::System.Threading.Tasks.Task<global::TestService.HelloWorldResponse> HelloWorld(global::TestService.HelloWorldRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::GKEgRPCService.HelloWorldResponse> HelloWorld(global::GKEgRPCService.HelloWorldRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
     }
 
-    /// <summary>Client for TestService</summary>
-    public partial class TestServiceClient : grpc::ClientBase<TestServiceClient>
+    /// <summary>Client for GKEgRPCService</summary>
+    public partial class GKEgRPCServiceClient : grpc::ClientBase<GKEgRPCServiceClient>
     {
-      /// <summary>Creates a new client for TestService</summary>
+      /// <summary>Creates a new client for GKEgRPCService</summary>
       /// <param name="channel">The channel to use to make remote calls.</param>
-      public TestServiceClient(grpc::ChannelBase channel) : base(channel)
+      public GKEgRPCServiceClient(grpc::ChannelBase channel) : base(channel)
       {
       }
-      /// <summary>Creates a new client for TestService that uses a custom <c>CallInvoker</c>.</summary>
+      /// <summary>Creates a new client for GKEgRPCService that uses a custom <c>CallInvoker</c>.</summary>
       /// <param name="callInvoker">The callInvoker to use to make remote calls.</param>
-      public TestServiceClient(grpc::CallInvoker callInvoker) : base(callInvoker)
+      public GKEgRPCServiceClient(grpc::CallInvoker callInvoker) : base(callInvoker)
       {
       }
       /// <summary>Protected parameterless constructor to allow creation of test doubles.</summary>
-      protected TestServiceClient() : base()
+      protected GKEgRPCServiceClient() : base()
       {
       }
       /// <summary>Protected constructor to allow creation of configured clients.</summary>
       /// <param name="configuration">The client configuration.</param>
-      protected TestServiceClient(ClientBaseConfiguration configuration) : base(configuration)
+      protected GKEgRPCServiceClient(ClientBaseConfiguration configuration) : base(configuration)
       {
       }
 
-      public virtual global::TestService.HealthCheckResponse HealthCheck(global::TestService.HealthCheckRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::GKEgRPCService.HealthCheckResponse HealthCheck(global::GKEgRPCService.HealthCheckRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return HealthCheck(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::TestService.HealthCheckResponse HealthCheck(global::TestService.HealthCheckRequest request, grpc::CallOptions options)
+      public virtual global::GKEgRPCService.HealthCheckResponse HealthCheck(global::GKEgRPCService.HealthCheckRequest request, grpc::CallOptions options)
       {
         return CallInvoker.BlockingUnaryCall(__Method_HealthCheck, null, options, request);
       }
-      public virtual grpc::AsyncUnaryCall<global::TestService.HealthCheckResponse> HealthCheckAsync(global::TestService.HealthCheckRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::GKEgRPCService.HealthCheckResponse> HealthCheckAsync(global::GKEgRPCService.HealthCheckRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return HealthCheckAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual grpc::AsyncUnaryCall<global::TestService.HealthCheckResponse> HealthCheckAsync(global::TestService.HealthCheckRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::GKEgRPCService.HealthCheckResponse> HealthCheckAsync(global::GKEgRPCService.HealthCheckRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_HealthCheck, null, options, request);
       }
-      public virtual global::TestService.HelloWorldResponse HelloWorld(global::TestService.HelloWorldRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual global::GKEgRPCService.HelloWorldResponse HelloWorld(global::GKEgRPCService.HelloWorldRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return HelloWorld(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual global::TestService.HelloWorldResponse HelloWorld(global::TestService.HelloWorldRequest request, grpc::CallOptions options)
+      public virtual global::GKEgRPCService.HelloWorldResponse HelloWorld(global::GKEgRPCService.HelloWorldRequest request, grpc::CallOptions options)
       {
         return CallInvoker.BlockingUnaryCall(__Method_HelloWorld, null, options, request);
       }
-      public virtual grpc::AsyncUnaryCall<global::TestService.HelloWorldResponse> HelloWorldAsync(global::TestService.HelloWorldRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      public virtual grpc::AsyncUnaryCall<global::GKEgRPCService.HelloWorldResponse> HelloWorldAsync(global::GKEgRPCService.HelloWorldRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
       {
         return HelloWorldAsync(request, new grpc::CallOptions(headers, deadline, cancellationToken));
       }
-      public virtual grpc::AsyncUnaryCall<global::TestService.HelloWorldResponse> HelloWorldAsync(global::TestService.HelloWorldRequest request, grpc::CallOptions options)
+      public virtual grpc::AsyncUnaryCall<global::GKEgRPCService.HelloWorldResponse> HelloWorldAsync(global::GKEgRPCService.HelloWorldRequest request, grpc::CallOptions options)
       {
         return CallInvoker.AsyncUnaryCall(__Method_HelloWorld, null, options, request);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
-      protected override TestServiceClient NewInstance(ClientBaseConfiguration configuration)
+      protected override GKEgRPCServiceClient NewInstance(ClientBaseConfiguration configuration)
       {
-        return new TestServiceClient(configuration);
+        return new GKEgRPCServiceClient(configuration);
       }
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
-    public static grpc::ServerServiceDefinition BindService(TestServiceBase serviceImpl)
+    public static grpc::ServerServiceDefinition BindService(GKEgRPCServiceBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_HealthCheck, serviceImpl.HealthCheck)
@@ -128,10 +128,10 @@ namespace TestService {
     /// Note: this method is part of an experimental API that can change or be removed without any prior notice.</summary>
     /// <param name="serviceBinder">Service methods will be bound by calling <c>AddMethod</c> on this object.</param>
     /// <param name="serviceImpl">An object implementing the server-side handling logic.</param>
-    public static void BindService(grpc::ServiceBinderBase serviceBinder, TestServiceBase serviceImpl)
+    public static void BindService(grpc::ServiceBinderBase serviceBinder, GKEgRPCServiceBase serviceImpl)
     {
-      serviceBinder.AddMethod(__Method_HealthCheck, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::TestService.HealthCheckRequest, global::TestService.HealthCheckResponse>(serviceImpl.HealthCheck));
-      serviceBinder.AddMethod(__Method_HelloWorld, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::TestService.HelloWorldRequest, global::TestService.HelloWorldResponse>(serviceImpl.HelloWorld));
+      serviceBinder.AddMethod(__Method_HealthCheck, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GKEgRPCService.HealthCheckRequest, global::GKEgRPCService.HealthCheckResponse>(serviceImpl.HealthCheck));
+      serviceBinder.AddMethod(__Method_HelloWorld, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::GKEgRPCService.HelloWorldRequest, global::GKEgRPCService.HelloWorldResponse>(serviceImpl.HelloWorld));
     }
 
   }
