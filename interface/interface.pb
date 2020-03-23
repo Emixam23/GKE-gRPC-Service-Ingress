@@ -1,13 +1,12 @@
 
-€
+·
 interface.protoGKEgRPCServicegoogle/api/annotations.proto"
 HealthCheckRequest"
 HealthCheckResponse"'
 HelloWorldRequest
 Name (	RName".
 HelloWorldResponse
-Content (	RContent2˜
-GKEgRPCServicer
-HealthCheck".GKEgRPCService.HealthCheckRequest#.GKEgRPCService.HealthCheckResponse"Ç”‰ì/rest/health_checkq
+Content (	RContent2~
+GKEgRPCServicel
 
-HelloWorld!.GKEgRPCService.HelloWorldRequest".GKEgRPCService.HelloWorldResponse"Ç”‰ì"/rest/hello_world:*BZgke_grpc_servicebproto3
+HelloWorld!.GKEgRPCService.HelloWorldRequest".GKEgRPCService.HelloWorldResponse"Ç”‰ì"/hello_world:*BZgke_grpc_servicebproto3

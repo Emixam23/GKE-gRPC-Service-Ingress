@@ -12,8 +12,7 @@ option go_package = "gke_grpc_service";
 
 service GKEgRPCService {
 
-    rpc HealthCheck (HealthCheckRequest) returns (HealthCheckResponse) { option (google.api.http) = { get: "/rest/health_check" }; }
-    rpc HelloWorld (HelloWorldRequest) returns (HelloWorldResponse) { option (google.api.http) = { post: "/rest/hello_world" body:"*" }; }
+    rpc HelloWorld (HelloWorldRequest) returns (HelloWorldResponse) { option (google.api.http) = { post: "/hello_world" body:"*" }; }
 
 }
 

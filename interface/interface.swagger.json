@@ -15,23 +15,7 @@
     "application/json"
   ],
   "paths": {
-    "/rest/health_check": {
-      "get": {
-        "operationId": "HealthCheck",
-        "responses": {
-          "200": {
-            "description": "A successful response.",
-            "schema": {
-              "$ref": "#/definitions/GKEgRPCServiceHealthCheckResponse"
-            }
-          }
-        },
-        "tags": [
-          "GKEgRPCService"
-        ]
-      }
-    },
-    "/rest/hello_world": {
+    "/hello_world": {
       "post": {
         "operationId": "HelloWorld",
         "responses": {
@@ -59,9 +43,6 @@
     }
   },
   "definitions": {
-    "GKEgRPCServiceHealthCheckResponse": {
-      "type": "object"
-    },
     "GKEgRPCServiceHelloWorldRequest": {
       "type": "object",
       "properties": {
