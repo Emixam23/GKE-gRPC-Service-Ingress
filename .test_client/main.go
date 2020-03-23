@@ -2,8 +2,7 @@ package main
 
 import (
 	"context"
-	stacktracer "gitlab.com/eyes-eyes/internals-stacktracer"
-	pb "gitlab.com/eyesbank/ingresstestgkegrpc/interface"
+	pb "github.com/Emixam23/GKE-gRPC-Service-Ingress/interface"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/status"
 	"log"
@@ -26,7 +25,7 @@ func main() {
 	// Set up a threads service stub connection to the service.
 	serviceConn, err := grpc.Dial(serviceEndpoint, grpc.WithInsecure())
 	if err != nil {
-		log.Fatalf("%s\n", stacktracer.NewStackTraceAsString(500, err.Error(), nil))
+		log.Fatalf("%s\n", err.Error())
 	}
 	service := pb.NewTestServiceClient(serviceConn)
 
