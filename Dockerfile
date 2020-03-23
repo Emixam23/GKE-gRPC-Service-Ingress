@@ -27,9 +27,6 @@ COPY . .
 # Run go build
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o main .
 
-# Remove ssh rsa
-RUN rm /root/.ssh/id_rsa
-
 RUN chmod +x main
 
 ############################################ MULTI STAGE BUILD PART 2 ##############################################
