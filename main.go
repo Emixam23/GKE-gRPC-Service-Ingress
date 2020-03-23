@@ -133,18 +133,6 @@ func (s *TestServiceServer) GetProgramArguments() (environment string, namespace
 	// Here each parameter which requires to be checked should be checked //
 	////////////////////////////////////////////////////////////////////////
 
-	// Checking the environment
-	possibleEnvs := []string{"prod", "preprod", "dev", "local"}
-	isEnvironmentValid := false
-	for _, env := range possibleEnvs {
-		if environment == env {
-			isEnvironmentValid = true
-		}
-	}
-	if !isEnvironmentValid {
-		log.Fatalf("Invalid environment provided [%s]. The environment must be either one of the following: [%s].\n", environment, strings.Join(possibleEnvs, ", "))
-	}
-
 	// Checking ports (grpc, rest)
 	if gRPCPort == 0 {
 		log.Fatalf("Invalid gRPC port provided [%d]. The gRPC port must be > 0.\n", gRPCPort)
