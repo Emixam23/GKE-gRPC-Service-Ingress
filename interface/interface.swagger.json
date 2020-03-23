@@ -1,0 +1,82 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "interface.proto",
+    "version": "version not set"
+  },
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/rest/health_check": {
+      "get": {
+        "operationId": "HealthCheck",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TestServiceHealthCheckResponse"
+            }
+          }
+        },
+        "tags": [
+          "TestService"
+        ]
+      }
+    },
+    "/rest/hello_world": {
+      "post": {
+        "operationId": "HelloWorld",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/TestServiceHelloWorldResponse"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/TestServiceHelloWorldRequest"
+            }
+          }
+        ],
+        "tags": [
+          "TestService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "TestServiceHealthCheckResponse": {
+      "type": "object"
+    },
+    "TestServiceHelloWorldRequest": {
+      "type": "object",
+      "properties": {
+        "Name": {
+          "type": "string"
+        }
+      }
+    },
+    "TestServiceHelloWorldResponse": {
+      "type": "object",
+      "properties": {
+        "Content": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

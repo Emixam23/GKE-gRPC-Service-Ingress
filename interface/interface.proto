@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+package TestService;
+
+import "google/api/annotations.proto";
+
+option go_package = "test_service";
+
+//
+// The Service definition.
+//
+
+service TestService {
+
+    rpc HealthCheck (HealthCheckRequest) returns (HealthCheckResponse) { option (google.api.http) = { get: "/health_check" }; }
+    rpc HelloWorld (HelloWorldRequest) returns (HelloWorldResponse) { option (google.api.http) = { post: "/hello_world" body:"*" }; }
+
+}
+
+//
+// GCP Health Check
+//
+
+message HealthCheckRequest {}
+message HealthCheckResponse {}
+
+//
+// Service parameters/returns data definition.
+//
+
+message HelloWorldRequest {
+    string Name = 1;
+}
+
+message HelloWorldResponse {
+    string Content = 1;
+}
