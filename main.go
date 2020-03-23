@@ -48,9 +48,6 @@ func main() {
 	// Profiler initialization, best done as early as possible.
 	// Only Available on GCP.
 	if environment != "local" {
-		// local-test-service
-		// dev-Max-test-service
-		// preprod-test-service
 		service := environment
 		if namespace != "" {
 			service = service + "-" + namespace
