@@ -2,7 +2,7 @@
 
 ############################################ MULTI STAGE BUILD PART 1 ##############################################
 
-# Start from golang v1.11 base image
+# Start from golang v1.14 base image
 FROM golang:1.14 as builder
 
 # Add Maintainer Info
