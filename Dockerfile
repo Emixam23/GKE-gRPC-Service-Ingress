@@ -3,7 +3,7 @@
 ############################################ MULTI STAGE BUILD PART 1 ##############################################
 
 # Start from golang v1.11 base image
-FROM golang:1.11 as builder
+FROM golang:1.14 as builder
 
 # Add Maintainer Info
 LABEL maintainer="Maxime GUITTET <maxime.guittet@say-eyes.com>"
@@ -40,6 +40,7 @@ WORKDIR /service
 # Copy the certificats and executable into new Docker image
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /service/main /service/
+RUN apk add --no-cache curl
 
 ## Get required ARGs and put them into ENVs variables
 ARG ENVIRONMENT
