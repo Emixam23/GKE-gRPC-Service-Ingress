@@ -164,7 +164,7 @@ func (s *TestServiceServer) RunAsGRPCServer(gRPCAddr string) {
 	log.Printf("gRPC Listening on %s\n", gRPCAddr)
 
 	server := grpc.NewServer(s.withServerUnaryInterceptor())
-	pb.RegisterTestServiceServer(server, s)
+	pb.RegisterGKEgRPCServiceServer(server, s)
 	// Register reflection service on gRPC server.
 	reflection.Register(server)
 
@@ -221,7 +221,7 @@ func (s *TestServiceServer) RunAsGRPCGatewayServer(gRPCAddr string, RESTAddr str
 	opts := []grpc.DialOption{grpc.WithInsecure()}
 	mux := runtime.NewServeMux()
 
-	if err := pb.RegisterTestServiceHandlerFromEndpoint(context.Background(), mux, gRPCAddr, opts); err != nil {
+	if err := pb.RegisterGKEgRPCServiceHandlerFromEndpoint(context.Background(), mux, gRPCAddr, opts); err != nil {
 		log.Fatalf("failed to start HTTP server: %v", err)
 	}
 	log.Printf("HTTP Listening on %s\n", RESTAddr)

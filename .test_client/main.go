@@ -27,7 +27,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("%s\n", err.Error())
 	}
-	service := pb.NewTestServiceClient(serviceConn)
+	service := pb.NewGKEgRPCServiceClient(serviceConn)
 
 	log.Println()
 	log.Println("---- TEST ----")
@@ -71,7 +71,7 @@ func (s *TestServiceClient) GetProgramArguments() (serviceEndpoint string) {
 	return serviceEndpoint
 }
 
-func (s *TestServiceClient) HelloWorld(conn pb.TestServiceClient, name string) {
+func (s *TestServiceClient) HelloWorld(conn pb.GKEgRPCServiceClient, name string) {
 
 	// Registering the instance to the dispatcher
 	ctx, _ := context.WithTimeout(context.Background(), 2*time.Second)
@@ -86,7 +86,7 @@ func (s *TestServiceClient) HelloWorld(conn pb.TestServiceClient, name string) {
 
 }
 
-func (s *TestServiceClient) HealthCheck(conn pb.TestServiceClient) {
+func (s *TestServiceClient) HealthCheck(conn pb.GKEgRPCServiceClient) {
 
 	// Registering the instance to the dispatcher
 	ctx, _ := context.WithTimeout(context.Background(), 2*time.Second)
