@@ -25,11 +25,11 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      run: gkegrpcservice
+      app: gkegrpcservice
   template:
     metadata:
       labels:
-        run: gkegrpcservice
+        app: gkegrpcservice
     spec:
       containers:
         - name: gkegrpcservice
@@ -49,31 +49,25 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    cloud.google.com/app-protocols: '{"grpc":"HTTP2"}'
   name: gkegrpcservice
-  namespace: default
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
-    run: gkegrpcservice
+    app: gkegrpcservice
   ports:
-    # Port that accepts gRPC and JSON/HTTP2 requests over HTTP.
-    - port: 8080
+    - name: grpc
+      port: 80
       targetPort: 8080
-      protocol: TCP
-      name: grpc
 ---
-apiVersion: extensions/v1beta1
-kind: Ingress
+apiVersion: v1
+kind: Service
 metadata:
-  name: gkegrpcservice-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/backend-protocol: "GRPC"
-    nginx.ingress.kubernetes.io/grpc-backend: "true"
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
-  namespace: default
+  name: gkegrpcservice-external
 spec:
-  backend:
-    serviceName: gkegrpcservice
-    servicePort: 8080
+  type: LoadBalancer
+  selector:
+    app: gkegrpcservice
+  ports:
+    - name: grpc
+      port: 80
+      targetPort: 8080

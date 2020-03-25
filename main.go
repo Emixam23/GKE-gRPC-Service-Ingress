@@ -4,17 +4,13 @@ import (
 	"cloud.google.com/go/profiler"
 	"context"
 	"encoding/json"
-	"flag"
 	"fmt"
 	pb "github.com/Emixam23/GKE-gRPC-Service-Ingress/interface"
-	"github.com/golang/glog"
-	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"google.golang.org/grpc/codes"
 	healthpb "google.golang.org/grpc/health/grpc_health_v1"
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 	"log"
-	"math/rand"
 	"net"
 	"os"
 	"strconv"
@@ -24,14 +20,9 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
-	"net/http"
 )
 
 const SERVICE = "GKE-gRPC-Service"
-
-var (
-	unhealthyproability = flag.Int("unhealthyproability", 0, "percentage chance the service is unhealthy (0->100)")
-)
 
 // main is the starting point of the current micro service.
 func main() {
@@ -43,7 +34,7 @@ func main() {
 	}
 
 	// Program arguments
-	environment, namespace, gRPCPort, RESTPort := serviceServer.GetProgramArguments()
+	environment, namespace, gRPCPort, _ := serviceServer.GetProgramArguments()
 
 	// Profiler initialization, best done as early as possible.
 	// Only Available on GCP.
@@ -67,13 +58,7 @@ func main() {
 	log.Println("Try running service ...")
 
 	// grpc server
-	go serviceServer.RunAsGRPCServer(fmt.Sprintf("0.0.0.0:%d", gRPCPort))
-
-	// grpc gateway server
-	// Run as gRPC gateway server
-	if err := serviceServer.RunAsGRPCGatewayServer(fmt.Sprintf("0.0.0.0:%d", gRPCPort), fmt.Sprintf("0.0.0.0:%d", RESTPort)); err != nil {
-		glog.Fatal(err)
-	}
+	serviceServer.RunAsGRPCServer(fmt.Sprintf("0.0.0.0:%d", gRPCPort))
 
 }
 
@@ -220,24 +205,6 @@ func (s *GKEgRPCServiceServer) serverInterceptor(ctx context.Context,
 }
 
 //
-// gRPC Gateway
-//
-
-func (s *GKEgRPCServiceServer) RunAsGRPCGatewayServer(gRPCAddr string, RESTAddr string) error {
-
-	opts := []grpc.DialOption{grpc.WithInsecure()}
-	mux := runtime.NewServeMux()
-
-	if err := pb.RegisterGKEgRPCServiceHandlerFromEndpoint(context.Background(), mux, gRPCAddr, opts); err != nil {
-		log.Fatalf("failed to start HTTP server: %v", err)
-	}
-	log.Printf("HTTP Listening on %s\n", RESTAddr)
-
-	return http.ListenAndServe(RESTAddr, mux)
-
-}
-
-//
 // Implementation
 //
 
@@ -253,27 +220,7 @@ func (s *GKEgRPCServiceServer) HelloWorld(ctx context.Context, in *pb.HelloWorld
 }
 
 func (s *GKEgRPCServiceServer) Check(ctx context.Context, in *healthpb.HealthCheckRequest) (*healthpb.HealthCheckResponse, error) {
-	s.mu.Lock()
-	defer s.mu.Unlock()
-
-	if in.Service == "" {
-		// return overall status
-		return &healthpb.HealthCheckResponse{Status: healthpb.HealthCheckResponse_SERVING}, nil
-	}
-
-	r := rand.Intn(100)
-	if r <= *unhealthyproability {
-		s.statusMap["echo.EchoServer"] = healthpb.HealthCheckResponse_NOT_SERVING
-	} else {
-		s.statusMap["echo.EchoServer"] = healthpb.HealthCheckResponse_SERVING
-	}
-	st, ok := s.statusMap[in.Service]
-	if !ok {
-		// https://github.com/grpc/grpc/blob/master/doc/health-checking.md
-		// "If the service name is not registered, the server returns a NOT_FOUND GRPC status."
-		return &healthpb.HealthCheckResponse{Status: healthpb.HealthCheckResponse_UNKNOWN}, status.Error(codes.NotFound, "unknown service")
-	}
-	return &healthpb.HealthCheckResponse{Status: st}, nil
+	return &healthpb.HealthCheckResponse{Status: healthpb.HealthCheckResponse_SERVING}, nil
 }
 
 func (s *GKEgRPCServiceServer) Watch(in *healthpb.HealthCheckRequest, srv healthpb.Health_WatchServer) error {
