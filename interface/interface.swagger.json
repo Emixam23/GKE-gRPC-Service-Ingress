@@ -40,6 +40,22 @@
           "GKEgRPCService"
         ]
       }
+    },
+    "/test": {
+      "get": {
+        "operationId": "Test",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/GKEgRPCServiceTestResponse"
+            }
+          }
+        },
+        "tags": [
+          "GKEgRPCService"
+        ]
+      }
     }
   },
   "definitions": {
@@ -52,6 +68,14 @@
       }
     },
     "GKEgRPCServiceHelloWorldResponse": {
+      "type": "object",
+      "properties": {
+        "Content": {
+          "type": "string"
+        }
+      }
+    },
+    "GKEgRPCServiceTestResponse": {
       "type": "object",
       "properties": {
         "Content": {

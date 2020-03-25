@@ -25,6 +25,12 @@ import Foundation
 import SwiftGRPC
 import SwiftProtobuf
 
+internal protocol GKEgRPCService_GKEgRPCServiceTestCall: ClientCallUnary {}
+
+fileprivate final class GKEgRPCService_GKEgRPCServiceTestCallBase: ClientCallUnaryBase<GKEgRPCService_TestRequest, GKEgRPCService_TestResponse>, GKEgRPCService_GKEgRPCServiceTestCall {
+  override class var method: String { return "/GKEgRPCService.GKEgRPCService/Test" }
+}
+
 internal protocol GKEgRPCService_GKEgRPCServiceHelloWorldCall: ClientCallUnary {}
 
 fileprivate final class GKEgRPCService_GKEgRPCServiceHelloWorldCallBase: ClientCallUnaryBase<GKEgRPCService_HelloWorldRequest, GKEgRPCService_HelloWorldResponse>, GKEgRPCService_GKEgRPCServiceHelloWorldCall {
@@ -35,6 +41,12 @@ fileprivate final class GKEgRPCService_GKEgRPCServiceHelloWorldCallBase: ClientC
 /// Instantiate GKEgRPCService_GKEgRPCServiceServiceClient, then call methods of this protocol to make API calls.
 internal protocol GKEgRPCService_GKEgRPCServiceService: ServiceClient {
   /// Synchronous. Unary.
+  func test(_ request: GKEgRPCService_TestRequest, metadata customMetadata: Metadata) throws -> GKEgRPCService_TestResponse
+  /// Asynchronous. Unary.
+  @discardableResult
+  func test(_ request: GKEgRPCService_TestRequest, metadata customMetadata: Metadata, completion: @escaping (GKEgRPCService_TestResponse?, CallResult) -> Void) throws -> GKEgRPCService_GKEgRPCServiceTestCall
+
+  /// Synchronous. Unary.
   func helloWorld(_ request: GKEgRPCService_HelloWorldRequest, metadata customMetadata: Metadata) throws -> GKEgRPCService_HelloWorldResponse
   /// Asynchronous. Unary.
   @discardableResult
@@ -43,6 +55,16 @@ internal protocol GKEgRPCService_GKEgRPCServiceService: ServiceClient {
 }
 
 internal extension GKEgRPCService_GKEgRPCServiceService {
+  /// Synchronous. Unary.
+  func test(_ request: GKEgRPCService_TestRequest) throws -> GKEgRPCService_TestResponse {
+    return try self.test(request, metadata: self.metadata)
+  }
+  /// Asynchronous. Unary.
+  @discardableResult
+  func test(_ request: GKEgRPCService_TestRequest, completion: @escaping (GKEgRPCService_TestResponse?, CallResult) -> Void) throws -> GKEgRPCService_GKEgRPCServiceTestCall {
+    return try self.test(request, metadata: self.metadata, completion: completion)
+  }
+
   /// Synchronous. Unary.
   func helloWorld(_ request: GKEgRPCService_HelloWorldRequest) throws -> GKEgRPCService_HelloWorldResponse {
     return try self.helloWorld(request, metadata: self.metadata)
@@ -56,6 +78,18 @@ internal extension GKEgRPCService_GKEgRPCServiceService {
 }
 
 internal final class GKEgRPCService_GKEgRPCServiceServiceClient: ServiceClientBase, GKEgRPCService_GKEgRPCServiceService {
+  /// Synchronous. Unary.
+  internal func test(_ request: GKEgRPCService_TestRequest, metadata customMetadata: Metadata) throws -> GKEgRPCService_TestResponse {
+    return try GKEgRPCService_GKEgRPCServiceTestCallBase(channel)
+      .run(request: request, metadata: customMetadata)
+  }
+  /// Asynchronous. Unary.
+  @discardableResult
+  internal func test(_ request: GKEgRPCService_TestRequest, metadata customMetadata: Metadata, completion: @escaping (GKEgRPCService_TestResponse?, CallResult) -> Void) throws -> GKEgRPCService_GKEgRPCServiceTestCall {
+    return try GKEgRPCService_GKEgRPCServiceTestCallBase(channel)
+      .start(request: request, metadata: customMetadata, completion: completion)
+  }
+
   /// Synchronous. Unary.
   internal func helloWorld(_ request: GKEgRPCService_HelloWorldRequest, metadata customMetadata: Metadata) throws -> GKEgRPCService_HelloWorldResponse {
     return try GKEgRPCService_GKEgRPCServiceHelloWorldCallBase(channel)

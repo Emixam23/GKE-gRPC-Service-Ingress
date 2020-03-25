@@ -6,6 +6,8 @@ import (
 	"encoding/json"
 	"fmt"
 	pb "github.com/Emixam23/GKE-gRPC-Service-Ingress/interface"
+	"github.com/golang/glog"
+	"github.com/grpc-ecosystem/grpc-gateway/runtime"
 	"google.golang.org/grpc/codes"
 	healthpb "google.golang.org/grpc/health/grpc_health_v1"
 	"google.golang.org/grpc/metadata"
@@ -20,6 +22,7 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
+	"net/http"
 )
 
 const SERVICE = "GKE-gRPC-Service"
@@ -34,7 +37,7 @@ func main() {
 	}
 
 	// Program arguments
-	environment, namespace, gRPCPort, _ := serviceServer.GetProgramArguments()
+	environment, namespace, gRPCPort, RESTPort := serviceServer.GetProgramArguments()
 
 	// Profiler initialization, best done as early as possible.
 	// Only Available on GCP.
@@ -58,7 +61,13 @@ func main() {
 	log.Println("Try running service ...")
 
 	// grpc server
-	serviceServer.RunAsGRPCServer(fmt.Sprintf("0.0.0.0:%d", gRPCPort))
+	go serviceServer.RunAsGRPCServer(fmt.Sprintf("0.0.0.0:%d", gRPCPort))
+
+	// grpc gateway server
+	// Run as gRPC gateway server
+	if err := serviceServer.RunAsGRPCGatewayServer(fmt.Sprintf("0.0.0.0:%d", gRPCPort), fmt.Sprintf("0.0.0.0:%d", RESTPort)); err != nil {
+		glog.Fatal(err)
+	}
 
 }
 
@@ -205,6 +214,24 @@ func (s *GKEgRPCServiceServer) serverInterceptor(ctx context.Context,
 }
 
 //
+// gRPC Gateway
+//
+
+func (s *GKEgRPCServiceServer) RunAsGRPCGatewayServer(gRPCAddr string, RESTAddr string) error {
+
+	opts := []grpc.DialOption{grpc.WithInsecure()}
+	mux := runtime.NewServeMux()
+
+	if err := pb.RegisterGKEgRPCServiceHandlerFromEndpoint(context.Background(), mux, gRPCAddr, opts); err != nil {
+		log.Fatalf("failed to start HTTP server: %v", err)
+	}
+	log.Printf("HTTP Listening on %s\n", RESTAddr)
+
+	return http.ListenAndServe(RESTAddr, mux)
+
+}
+
+//
 // Implementation
 //
 
@@ -217,6 +244,10 @@ type GKEgRPCServiceServer struct {
 
 func (s *GKEgRPCServiceServer) HelloWorld(ctx context.Context, in *pb.HelloWorldRequest) (*pb.HelloWorldResponse, error) {
 	return &pb.HelloWorldResponse{Content: fmt.Sprintf("HelloWorld to you %s!", in.Name)}, nil
+}
+
+func (s *GKEgRPCServiceServer) Test(ctx context.Context, in *pb.TestRequest) (*pb.TestResponse, error) {
+	return &pb.TestResponse{Content:"You've reached Emixam23 deployment with no port specified."}, nil
 }
 
 func (s *GKEgRPCServiceServer) Check(ctx context.Context, in *healthpb.HealthCheckRequest) (*healthpb.HealthCheckResponse, error) {

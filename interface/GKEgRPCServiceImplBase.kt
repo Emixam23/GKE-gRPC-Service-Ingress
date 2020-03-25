@@ -28,6 +28,24 @@ abstract class GKEgRPCServiceImplBase(
     
     
     
+    open suspend fun test(request: GKEgRPCService.Interface.TestRequest): GKEgRPCService.Interface.TestResponse {
+        throw unimplemented(getTestMethod()).asRuntimeException()
+    }
+
+    internal fun testInternal(
+        request: GKEgRPCService.Interface.TestRequest,
+        responseObserver: StreamObserver<GKEgRPCService.Interface.TestResponse>
+    ) {
+        launch {
+            tryCatchingStatus(responseObserver) {
+                val response = test(request)
+                onNext(response)
+            }
+        }
+    }
+    
+    
+    
     open suspend fun helloWorld(request: GKEgRPCService.Interface.HelloWorldRequest): GKEgRPCService.Interface.HelloWorldResponse {
         throw unimplemented(getHelloWorldMethod()).asRuntimeException()
     }
@@ -46,6 +64,12 @@ abstract class GKEgRPCServiceImplBase(
 
     override fun bindService(): ServerServiceDefinition {
         return ServerServiceDefinition.builder(getServiceDescriptor())
+            .addMethod(
+                getTestMethod(),
+                ServerCalls.asyncUnaryCall(
+                    MethodHandlers(METHODID_TEST)
+                )
+            )
             .addMethod(
                 getHelloWorldMethod(),
                 ServerCalls.asyncUnaryCall(
@@ -89,7 +113,8 @@ abstract class GKEgRPCServiceImplBase(
         }
     }
 
-    private val METHODID_HELLO_WORLD = 0
+    private val METHODID_TEST = 0
+    private val METHODID_HELLO_WORLD = 1
 
     private inner class MethodHandlers<Req, Resp> internal constructor(
         private val methodId: Int
@@ -101,6 +126,11 @@ abstract class GKEgRPCServiceImplBase(
         @Suppress("UNCHECKED_CAST")
         override fun invoke(request: Req, responseObserver: StreamObserver<Resp>) {
             when (methodId) {
+                METHODID_TEST ->
+                    this@GKEgRPCServiceImplBase.testInternal(
+                        request as GKEgRPCService.Interface.TestRequest,
+                        responseObserver as StreamObserver<GKEgRPCService.Interface.TestResponse>
+                    )
                 METHODID_HELLO_WORLD ->
                     this@GKEgRPCServiceImplBase.helloWorldInternal(
                         request as GKEgRPCService.Interface.HelloWorldRequest,

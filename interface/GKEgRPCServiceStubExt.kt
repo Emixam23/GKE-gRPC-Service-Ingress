@@ -19,6 +19,14 @@ import io.grpc.stub.MetadataUtils
 
 
 
+suspend inline fun GKEgRPCServiceStub.test(request: GKEgRPCService.Interface.TestRequest): GKEgRPCService.Interface.TestResponse {
+    return suspendCoroutine {
+        test(request, ContinuationStreamObserver(it))
+    }
+}
+
+
+
 suspend inline fun GKEgRPCServiceStub.helloWorld(request: GKEgRPCService.Interface.HelloWorldRequest): GKEgRPCService.Interface.HelloWorldResponse {
     return suspendCoroutine {
         helloWorld(request, ContinuationStreamObserver(it))

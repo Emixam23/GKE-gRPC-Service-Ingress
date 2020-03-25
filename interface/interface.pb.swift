@@ -19,7 +19,7 @@ fileprivate struct _GeneratedWithProtocGenSwiftVersion: SwiftProtobuf.ProtobufAP
   typealias Version = _2
 }
 
-struct GKEgRPCService_HealthCheckRequest {
+struct GKEgRPCService_TestRequest {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
@@ -29,10 +29,12 @@ struct GKEgRPCService_HealthCheckRequest {
   init() {}
 }
 
-struct GKEgRPCService_HealthCheckResponse {
+struct GKEgRPCService_TestResponse {
   // SwiftProtobuf.Message conformance is added in an extension below. See the
   // `Message` and `Message+*Additions` files in the SwiftProtobuf library for
   // methods supported on all messages.
+
+  var content: String = String()
 
   var unknownFields = SwiftProtobuf.UnknownStorage()
 
@@ -67,8 +69,8 @@ struct GKEgRPCService_HelloWorldResponse {
 
 fileprivate let _protobuf_package = "GKEgRPCService"
 
-extension GKEgRPCService_HealthCheckRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".HealthCheckRequest"
+extension GKEgRPCService_TestRequest: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".TestRequest"
   static let _protobuf_nameMap = SwiftProtobuf._NameMap()
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
@@ -80,26 +82,36 @@ extension GKEgRPCService_HealthCheckRequest: SwiftProtobuf.Message, SwiftProtobu
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: GKEgRPCService_HealthCheckRequest, rhs: GKEgRPCService_HealthCheckRequest) -> Bool {
+  static func ==(lhs: GKEgRPCService_TestRequest, rhs: GKEgRPCService_TestRequest) -> Bool {
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }
 }
 
-extension GKEgRPCService_HealthCheckResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
-  static let protoMessageName: String = _protobuf_package + ".HealthCheckResponse"
-  static let _protobuf_nameMap = SwiftProtobuf._NameMap()
+extension GKEgRPCService_TestResponse: SwiftProtobuf.Message, SwiftProtobuf._MessageImplementationBase, SwiftProtobuf._ProtoNameProviding {
+  static let protoMessageName: String = _protobuf_package + ".TestResponse"
+  static let _protobuf_nameMap: SwiftProtobuf._NameMap = [
+    1: .same(proto: "Content"),
+  ]
 
   mutating func decodeMessage<D: SwiftProtobuf.Decoder>(decoder: inout D) throws {
-    while let _ = try decoder.nextFieldNumber() {
+    while let fieldNumber = try decoder.nextFieldNumber() {
+      switch fieldNumber {
+      case 1: try decoder.decodeSingularStringField(value: &self.content)
+      default: break
+      }
     }
   }
 
   func traverse<V: SwiftProtobuf.Visitor>(visitor: inout V) throws {
+    if !self.content.isEmpty {
+      try visitor.visitSingularStringField(value: self.content, fieldNumber: 1)
+    }
     try unknownFields.traverse(visitor: &visitor)
   }
 
-  static func ==(lhs: GKEgRPCService_HealthCheckResponse, rhs: GKEgRPCService_HealthCheckResponse) -> Bool {
+  static func ==(lhs: GKEgRPCService_TestResponse, rhs: GKEgRPCService_TestResponse) -> Bool {
+    if lhs.content != rhs.content {return false}
     if lhs.unknownFields != rhs.unknownFields {return false}
     return true
   }

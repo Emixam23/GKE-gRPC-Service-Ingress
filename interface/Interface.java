@@ -14,23 +14,23 @@ public final class Interface {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  public interface HealthCheckRequestOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:GKEgRPCService.HealthCheckRequest)
+  public interface TestRequestOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GKEgRPCService.TestRequest)
       com.google.protobuf.MessageOrBuilder {
   }
   /**
-   * Protobuf type {@code GKEgRPCService.HealthCheckRequest}
+   * Protobuf type {@code GKEgRPCService.TestRequest}
    */
-  public  static final class HealthCheckRequest extends
+  public  static final class TestRequest extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:GKEgRPCService.HealthCheckRequest)
-      HealthCheckRequestOrBuilder {
+      // @@protoc_insertion_point(message_implements:GKEgRPCService.TestRequest)
+      TestRequestOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use HealthCheckRequest.newBuilder() to construct.
-    private HealthCheckRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use TestRequest.newBuilder() to construct.
+    private TestRequest(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private HealthCheckRequest() {
+    private TestRequest() {
     }
 
     @java.lang.Override
@@ -38,7 +38,7 @@ public final class Interface {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private HealthCheckRequest(
+    private TestRequest(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -77,15 +77,15 @@ public final class Interface {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return GKEgRPCService.Interface.internal_static_GKEgRPCService_HealthCheckRequest_descriptor;
+      return GKEgRPCService.Interface.internal_static_GKEgRPCService_TestRequest_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return GKEgRPCService.Interface.internal_static_GKEgRPCService_HealthCheckRequest_fieldAccessorTable
+      return GKEgRPCService.Interface.internal_static_GKEgRPCService_TestRequest_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              GKEgRPCService.Interface.HealthCheckRequest.class, GKEgRPCService.Interface.HealthCheckRequest.Builder.class);
+              GKEgRPCService.Interface.TestRequest.class, GKEgRPCService.Interface.TestRequest.Builder.class);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -121,10 +121,10 @@ public final class Interface {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof GKEgRPCService.Interface.HealthCheckRequest)) {
+      if (!(obj instanceof GKEgRPCService.Interface.TestRequest)) {
         return super.equals(obj);
       }
-      GKEgRPCService.Interface.HealthCheckRequest other = (GKEgRPCService.Interface.HealthCheckRequest) obj;
+      GKEgRPCService.Interface.TestRequest other = (GKEgRPCService.Interface.TestRequest) obj;
 
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
@@ -142,69 +142,69 @@ public final class Interface {
       return hash;
     }
 
-    public static GKEgRPCService.Interface.HealthCheckRequest parseFrom(
+    public static GKEgRPCService.Interface.TestRequest parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GKEgRPCService.Interface.HealthCheckRequest parseFrom(
+    public static GKEgRPCService.Interface.TestRequest parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GKEgRPCService.Interface.HealthCheckRequest parseFrom(
+    public static GKEgRPCService.Interface.TestRequest parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GKEgRPCService.Interface.HealthCheckRequest parseFrom(
+    public static GKEgRPCService.Interface.TestRequest parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GKEgRPCService.Interface.HealthCheckRequest parseFrom(byte[] data)
+    public static GKEgRPCService.Interface.TestRequest parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GKEgRPCService.Interface.HealthCheckRequest parseFrom(
+    public static GKEgRPCService.Interface.TestRequest parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GKEgRPCService.Interface.HealthCheckRequest parseFrom(java.io.InputStream input)
+    public static GKEgRPCService.Interface.TestRequest parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GKEgRPCService.Interface.HealthCheckRequest parseFrom(
+    public static GKEgRPCService.Interface.TestRequest parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GKEgRPCService.Interface.HealthCheckRequest parseDelimitedFrom(java.io.InputStream input)
+    public static GKEgRPCService.Interface.TestRequest parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GKEgRPCService.Interface.HealthCheckRequest parseDelimitedFrom(
+    public static GKEgRPCService.Interface.TestRequest parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GKEgRPCService.Interface.HealthCheckRequest parseFrom(
+    public static GKEgRPCService.Interface.TestRequest parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GKEgRPCService.Interface.HealthCheckRequest parseFrom(
+    public static GKEgRPCService.Interface.TestRequest parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -217,7 +217,7 @@ public final class Interface {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GKEgRPCService.Interface.HealthCheckRequest prototype) {
+    public static Builder newBuilder(GKEgRPCService.Interface.TestRequest prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -233,26 +233,26 @@ public final class Interface {
       return builder;
     }
     /**
-     * Protobuf type {@code GKEgRPCService.HealthCheckRequest}
+     * Protobuf type {@code GKEgRPCService.TestRequest}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:GKEgRPCService.HealthCheckRequest)
-        GKEgRPCService.Interface.HealthCheckRequestOrBuilder {
+        // @@protoc_insertion_point(builder_implements:GKEgRPCService.TestRequest)
+        GKEgRPCService.Interface.TestRequestOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return GKEgRPCService.Interface.internal_static_GKEgRPCService_HealthCheckRequest_descriptor;
+        return GKEgRPCService.Interface.internal_static_GKEgRPCService_TestRequest_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return GKEgRPCService.Interface.internal_static_GKEgRPCService_HealthCheckRequest_fieldAccessorTable
+        return GKEgRPCService.Interface.internal_static_GKEgRPCService_TestRequest_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                GKEgRPCService.Interface.HealthCheckRequest.class, GKEgRPCService.Interface.HealthCheckRequest.Builder.class);
+                GKEgRPCService.Interface.TestRequest.class, GKEgRPCService.Interface.TestRequest.Builder.class);
       }
 
-      // Construct using GKEgRPCService.Interface.HealthCheckRequest.newBuilder()
+      // Construct using GKEgRPCService.Interface.TestRequest.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -276,17 +276,17 @@ public final class Interface {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return GKEgRPCService.Interface.internal_static_GKEgRPCService_HealthCheckRequest_descriptor;
+        return GKEgRPCService.Interface.internal_static_GKEgRPCService_TestRequest_descriptor;
       }
 
       @java.lang.Override
-      public GKEgRPCService.Interface.HealthCheckRequest getDefaultInstanceForType() {
-        return GKEgRPCService.Interface.HealthCheckRequest.getDefaultInstance();
+      public GKEgRPCService.Interface.TestRequest getDefaultInstanceForType() {
+        return GKEgRPCService.Interface.TestRequest.getDefaultInstance();
       }
 
       @java.lang.Override
-      public GKEgRPCService.Interface.HealthCheckRequest build() {
-        GKEgRPCService.Interface.HealthCheckRequest result = buildPartial();
+      public GKEgRPCService.Interface.TestRequest build() {
+        GKEgRPCService.Interface.TestRequest result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -294,8 +294,8 @@ public final class Interface {
       }
 
       @java.lang.Override
-      public GKEgRPCService.Interface.HealthCheckRequest buildPartial() {
-        GKEgRPCService.Interface.HealthCheckRequest result = new GKEgRPCService.Interface.HealthCheckRequest(this);
+      public GKEgRPCService.Interface.TestRequest buildPartial() {
+        GKEgRPCService.Interface.TestRequest result = new GKEgRPCService.Interface.TestRequest(this);
         onBuilt();
         return result;
       }
@@ -334,16 +334,16 @@ public final class Interface {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GKEgRPCService.Interface.HealthCheckRequest) {
-          return mergeFrom((GKEgRPCService.Interface.HealthCheckRequest)other);
+        if (other instanceof GKEgRPCService.Interface.TestRequest) {
+          return mergeFrom((GKEgRPCService.Interface.TestRequest)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GKEgRPCService.Interface.HealthCheckRequest other) {
-        if (other == GKEgRPCService.Interface.HealthCheckRequest.getDefaultInstance()) return this;
+      public Builder mergeFrom(GKEgRPCService.Interface.TestRequest other) {
+        if (other == GKEgRPCService.Interface.TestRequest.getDefaultInstance()) return this;
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -359,11 +359,11 @@ public final class Interface {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        GKEgRPCService.Interface.HealthCheckRequest parsedMessage = null;
+        GKEgRPCService.Interface.TestRequest parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GKEgRPCService.Interface.HealthCheckRequest) e.getUnfinishedMessage();
+          parsedMessage = (GKEgRPCService.Interface.TestRequest) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
@@ -385,63 +385,74 @@ public final class Interface {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:GKEgRPCService.HealthCheckRequest)
+      // @@protoc_insertion_point(builder_scope:GKEgRPCService.TestRequest)
     }
 
-    // @@protoc_insertion_point(class_scope:GKEgRPCService.HealthCheckRequest)
-    private static final GKEgRPCService.Interface.HealthCheckRequest DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:GKEgRPCService.TestRequest)
+    private static final GKEgRPCService.Interface.TestRequest DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GKEgRPCService.Interface.HealthCheckRequest();
+      DEFAULT_INSTANCE = new GKEgRPCService.Interface.TestRequest();
     }
 
-    public static GKEgRPCService.Interface.HealthCheckRequest getDefaultInstance() {
+    public static GKEgRPCService.Interface.TestRequest getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<HealthCheckRequest>
-        PARSER = new com.google.protobuf.AbstractParser<HealthCheckRequest>() {
+    private static final com.google.protobuf.Parser<TestRequest>
+        PARSER = new com.google.protobuf.AbstractParser<TestRequest>() {
       @java.lang.Override
-      public HealthCheckRequest parsePartialFrom(
+      public TestRequest parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new HealthCheckRequest(input, extensionRegistry);
+        return new TestRequest(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<HealthCheckRequest> parser() {
+    public static com.google.protobuf.Parser<TestRequest> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<HealthCheckRequest> getParserForType() {
+    public com.google.protobuf.Parser<TestRequest> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public GKEgRPCService.Interface.HealthCheckRequest getDefaultInstanceForType() {
+    public GKEgRPCService.Interface.TestRequest getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
   }
 
-  public interface HealthCheckResponseOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:GKEgRPCService.HealthCheckResponse)
+  public interface TestResponseOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:GKEgRPCService.TestResponse)
       com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string Content = 1;</code>
+     */
+    java.lang.String getContent();
+    /**
+     * <code>string Content = 1;</code>
+     */
+    com.google.protobuf.ByteString
+        getContentBytes();
   }
   /**
-   * Protobuf type {@code GKEgRPCService.HealthCheckResponse}
+   * Protobuf type {@code GKEgRPCService.TestResponse}
    */
-  public  static final class HealthCheckResponse extends
+  public  static final class TestResponse extends
       com.google.protobuf.GeneratedMessageV3 implements
-      // @@protoc_insertion_point(message_implements:GKEgRPCService.HealthCheckResponse)
-      HealthCheckResponseOrBuilder {
+      // @@protoc_insertion_point(message_implements:GKEgRPCService.TestResponse)
+      TestResponseOrBuilder {
   private static final long serialVersionUID = 0L;
-    // Use HealthCheckResponse.newBuilder() to construct.
-    private HealthCheckResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+    // Use TestResponse.newBuilder() to construct.
+    private TestResponse(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
       super(builder);
     }
-    private HealthCheckResponse() {
+    private TestResponse() {
+      content_ = "";
     }
 
     @java.lang.Override
@@ -449,7 +460,7 @@ public final class Interface {
     getUnknownFields() {
       return this.unknownFields;
     }
-    private HealthCheckResponse(
+    private TestResponse(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -457,6 +468,7 @@ public final class Interface {
       if (extensionRegistry == null) {
         throw new java.lang.NullPointerException();
       }
+      int mutable_bitField0_ = 0;
       com.google.protobuf.UnknownFieldSet.Builder unknownFields =
           com.google.protobuf.UnknownFieldSet.newBuilder();
       try {
@@ -467,6 +479,12 @@ public final class Interface {
             case 0:
               done = true;
               break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              content_ = s;
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -488,15 +506,49 @@ public final class Interface {
     }
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return GKEgRPCService.Interface.internal_static_GKEgRPCService_HealthCheckResponse_descriptor;
+      return GKEgRPCService.Interface.internal_static_GKEgRPCService_TestResponse_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return GKEgRPCService.Interface.internal_static_GKEgRPCService_HealthCheckResponse_fieldAccessorTable
+      return GKEgRPCService.Interface.internal_static_GKEgRPCService_TestResponse_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              GKEgRPCService.Interface.HealthCheckResponse.class, GKEgRPCService.Interface.HealthCheckResponse.Builder.class);
+              GKEgRPCService.Interface.TestResponse.class, GKEgRPCService.Interface.TestResponse.Builder.class);
+    }
+
+    public static final int CONTENT_FIELD_NUMBER = 1;
+    private volatile java.lang.Object content_;
+    /**
+     * <code>string Content = 1;</code>
+     */
+    public java.lang.String getContent() {
+      java.lang.Object ref = content_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        content_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string Content = 1;</code>
+     */
+    public com.google.protobuf.ByteString
+        getContentBytes() {
+      java.lang.Object ref = content_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        content_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
     }
 
     private byte memoizedIsInitialized = -1;
@@ -513,6 +565,9 @@ public final class Interface {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (!getContentBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, content_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -522,6 +577,9 @@ public final class Interface {
       if (size != -1) return size;
 
       size = 0;
+      if (!getContentBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, content_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -532,11 +590,13 @@ public final class Interface {
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof GKEgRPCService.Interface.HealthCheckResponse)) {
+      if (!(obj instanceof GKEgRPCService.Interface.TestResponse)) {
         return super.equals(obj);
       }
-      GKEgRPCService.Interface.HealthCheckResponse other = (GKEgRPCService.Interface.HealthCheckResponse) obj;
+      GKEgRPCService.Interface.TestResponse other = (GKEgRPCService.Interface.TestResponse) obj;
 
+      if (!getContent()
+          .equals(other.getContent())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -548,74 +608,76 @@ public final class Interface {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + CONTENT_FIELD_NUMBER;
+      hash = (53 * hash) + getContent().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static GKEgRPCService.Interface.HealthCheckResponse parseFrom(
+    public static GKEgRPCService.Interface.TestResponse parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GKEgRPCService.Interface.HealthCheckResponse parseFrom(
+    public static GKEgRPCService.Interface.TestResponse parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GKEgRPCService.Interface.HealthCheckResponse parseFrom(
+    public static GKEgRPCService.Interface.TestResponse parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GKEgRPCService.Interface.HealthCheckResponse parseFrom(
+    public static GKEgRPCService.Interface.TestResponse parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GKEgRPCService.Interface.HealthCheckResponse parseFrom(byte[] data)
+    public static GKEgRPCService.Interface.TestResponse parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static GKEgRPCService.Interface.HealthCheckResponse parseFrom(
+    public static GKEgRPCService.Interface.TestResponse parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static GKEgRPCService.Interface.HealthCheckResponse parseFrom(java.io.InputStream input)
+    public static GKEgRPCService.Interface.TestResponse parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GKEgRPCService.Interface.HealthCheckResponse parseFrom(
+    public static GKEgRPCService.Interface.TestResponse parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GKEgRPCService.Interface.HealthCheckResponse parseDelimitedFrom(java.io.InputStream input)
+    public static GKEgRPCService.Interface.TestResponse parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input);
     }
-    public static GKEgRPCService.Interface.HealthCheckResponse parseDelimitedFrom(
+    public static GKEgRPCService.Interface.TestResponse parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static GKEgRPCService.Interface.HealthCheckResponse parseFrom(
+    public static GKEgRPCService.Interface.TestResponse parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessageV3
           .parseWithIOException(PARSER, input);
     }
-    public static GKEgRPCService.Interface.HealthCheckResponse parseFrom(
+    public static GKEgRPCService.Interface.TestResponse parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -628,7 +690,7 @@ public final class Interface {
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(GKEgRPCService.Interface.HealthCheckResponse prototype) {
+    public static Builder newBuilder(GKEgRPCService.Interface.TestResponse prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -644,26 +706,26 @@ public final class Interface {
       return builder;
     }
     /**
-     * Protobuf type {@code GKEgRPCService.HealthCheckResponse}
+     * Protobuf type {@code GKEgRPCService.TestResponse}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:GKEgRPCService.HealthCheckResponse)
-        GKEgRPCService.Interface.HealthCheckResponseOrBuilder {
+        // @@protoc_insertion_point(builder_implements:GKEgRPCService.TestResponse)
+        GKEgRPCService.Interface.TestResponseOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return GKEgRPCService.Interface.internal_static_GKEgRPCService_HealthCheckResponse_descriptor;
+        return GKEgRPCService.Interface.internal_static_GKEgRPCService_TestResponse_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return GKEgRPCService.Interface.internal_static_GKEgRPCService_HealthCheckResponse_fieldAccessorTable
+        return GKEgRPCService.Interface.internal_static_GKEgRPCService_TestResponse_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                GKEgRPCService.Interface.HealthCheckResponse.class, GKEgRPCService.Interface.HealthCheckResponse.Builder.class);
+                GKEgRPCService.Interface.TestResponse.class, GKEgRPCService.Interface.TestResponse.Builder.class);
       }
 
-      // Construct using GKEgRPCService.Interface.HealthCheckResponse.newBuilder()
+      // Construct using GKEgRPCService.Interface.TestResponse.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -681,23 +743,25 @@ public final class Interface {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        content_ = "";
+
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return GKEgRPCService.Interface.internal_static_GKEgRPCService_HealthCheckResponse_descriptor;
+        return GKEgRPCService.Interface.internal_static_GKEgRPCService_TestResponse_descriptor;
       }
 
       @java.lang.Override
-      public GKEgRPCService.Interface.HealthCheckResponse getDefaultInstanceForType() {
-        return GKEgRPCService.Interface.HealthCheckResponse.getDefaultInstance();
+      public GKEgRPCService.Interface.TestResponse getDefaultInstanceForType() {
+        return GKEgRPCService.Interface.TestResponse.getDefaultInstance();
       }
 
       @java.lang.Override
-      public GKEgRPCService.Interface.HealthCheckResponse build() {
-        GKEgRPCService.Interface.HealthCheckResponse result = buildPartial();
+      public GKEgRPCService.Interface.TestResponse build() {
+        GKEgRPCService.Interface.TestResponse result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -705,8 +769,9 @@ public final class Interface {
       }
 
       @java.lang.Override
-      public GKEgRPCService.Interface.HealthCheckResponse buildPartial() {
-        GKEgRPCService.Interface.HealthCheckResponse result = new GKEgRPCService.Interface.HealthCheckResponse(this);
+      public GKEgRPCService.Interface.TestResponse buildPartial() {
+        GKEgRPCService.Interface.TestResponse result = new GKEgRPCService.Interface.TestResponse(this);
+        result.content_ = content_;
         onBuilt();
         return result;
       }
@@ -745,16 +810,20 @@ public final class Interface {
       }
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof GKEgRPCService.Interface.HealthCheckResponse) {
-          return mergeFrom((GKEgRPCService.Interface.HealthCheckResponse)other);
+        if (other instanceof GKEgRPCService.Interface.TestResponse) {
+          return mergeFrom((GKEgRPCService.Interface.TestResponse)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(GKEgRPCService.Interface.HealthCheckResponse other) {
-        if (other == GKEgRPCService.Interface.HealthCheckResponse.getDefaultInstance()) return this;
+      public Builder mergeFrom(GKEgRPCService.Interface.TestResponse other) {
+        if (other == GKEgRPCService.Interface.TestResponse.getDefaultInstance()) return this;
+        if (!other.getContent().isEmpty()) {
+          content_ = other.content_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -770,17 +839,86 @@ public final class Interface {
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
-        GKEgRPCService.Interface.HealthCheckResponse parsedMessage = null;
+        GKEgRPCService.Interface.TestResponse parsedMessage = null;
         try {
           parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
         } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (GKEgRPCService.Interface.HealthCheckResponse) e.getUnfinishedMessage();
+          parsedMessage = (GKEgRPCService.Interface.TestResponse) e.getUnfinishedMessage();
           throw e.unwrapIOException();
         } finally {
           if (parsedMessage != null) {
             mergeFrom(parsedMessage);
           }
         }
+        return this;
+      }
+
+      private java.lang.Object content_ = "";
+      /**
+       * <code>string Content = 1;</code>
+       */
+      public java.lang.String getContent() {
+        java.lang.Object ref = content_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          content_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string Content = 1;</code>
+       */
+      public com.google.protobuf.ByteString
+          getContentBytes() {
+        java.lang.Object ref = content_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          content_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string Content = 1;</code>
+       */
+      public Builder setContent(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        content_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string Content = 1;</code>
+       */
+      public Builder clearContent() {
+        
+        content_ = getDefaultInstance().getContent();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string Content = 1;</code>
+       */
+      public Builder setContentBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        content_ = value;
+        onChanged();
         return this;
       }
       @java.lang.Override
@@ -796,41 +934,41 @@ public final class Interface {
       }
 
 
-      // @@protoc_insertion_point(builder_scope:GKEgRPCService.HealthCheckResponse)
+      // @@protoc_insertion_point(builder_scope:GKEgRPCService.TestResponse)
     }
 
-    // @@protoc_insertion_point(class_scope:GKEgRPCService.HealthCheckResponse)
-    private static final GKEgRPCService.Interface.HealthCheckResponse DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:GKEgRPCService.TestResponse)
+    private static final GKEgRPCService.Interface.TestResponse DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new GKEgRPCService.Interface.HealthCheckResponse();
+      DEFAULT_INSTANCE = new GKEgRPCService.Interface.TestResponse();
     }
 
-    public static GKEgRPCService.Interface.HealthCheckResponse getDefaultInstance() {
+    public static GKEgRPCService.Interface.TestResponse getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<HealthCheckResponse>
-        PARSER = new com.google.protobuf.AbstractParser<HealthCheckResponse>() {
+    private static final com.google.protobuf.Parser<TestResponse>
+        PARSER = new com.google.protobuf.AbstractParser<TestResponse>() {
       @java.lang.Override
-      public HealthCheckResponse parsePartialFrom(
+      public TestResponse parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
-        return new HealthCheckResponse(input, extensionRegistry);
+        return new TestResponse(input, extensionRegistry);
       }
     };
 
-    public static com.google.protobuf.Parser<HealthCheckResponse> parser() {
+    public static com.google.protobuf.Parser<TestResponse> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<HealthCheckResponse> getParserForType() {
+    public com.google.protobuf.Parser<TestResponse> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public GKEgRPCService.Interface.HealthCheckResponse getDefaultInstanceForType() {
+    public GKEgRPCService.Interface.TestResponse getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -1935,15 +2073,15 @@ public final class Interface {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GKEgRPCService_HealthCheckRequest_descriptor;
+    internal_static_GKEgRPCService_TestRequest_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_GKEgRPCService_HealthCheckRequest_fieldAccessorTable;
+      internal_static_GKEgRPCService_TestRequest_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_GKEgRPCService_HealthCheckResponse_descriptor;
+    internal_static_GKEgRPCService_TestResponse_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_GKEgRPCService_HealthCheckResponse_fieldAccessorTable;
+      internal_static_GKEgRPCService_TestResponse_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_GKEgRPCService_HelloWorldRequest_descriptor;
   private static final 
@@ -1964,14 +2102,16 @@ public final class Interface {
   static {
     java.lang.String[] descriptorData = {
       "\n\017interface.proto\022\016GKEgRPCService\032\034googl" +
-      "e/api/annotations.proto\"\024\n\022HealthCheckRe" +
-      "quest\"\025\n\023HealthCheckResponse\"!\n\021HelloWor" +
-      "ldRequest\022\014\n\004Name\030\001 \001(\t\"%\n\022HelloWorldRes" +
-      "ponse\022\017\n\007Content\030\001 \001(\t2~\n\016GKEgRPCService" +
-      "\022l\n\nHelloWorld\022!.GKEgRPCService.HelloWor" +
-      "ldRequest\032\".GKEgRPCService.HelloWorldRes" +
-      "ponse\"\027\202\323\344\223\002\021\"\014/hello_world:\001*B\022Z\020gke_gr" +
-      "pc_serviceb\006proto3"
+      "e/api/annotations.proto\"\r\n\013TestRequest\"\037" +
+      "\n\014TestResponse\022\017\n\007Content\030\001 \001(\t\"!\n\021Hello" +
+      "WorldRequest\022\014\n\004Name\030\001 \001(\t\"%\n\022HelloWorld" +
+      "Response\022\017\n\007Content\030\001 \001(\t2\320\001\n\016GKEgRPCSer" +
+      "vice\022P\n\004Test\022\033.GKEgRPCService.TestReques" +
+      "t\032\034.GKEgRPCService.TestResponse\"\r\202\323\344\223\002\007\022" +
+      "\005/test\022l\n\nHelloWorld\022!.GKEgRPCService.He" +
+      "lloWorldRequest\032\".GKEgRPCService.HelloWo" +
+      "rldResponse\"\027\202\323\344\223\002\021\"\014/hello_world:\001*B\022Z\020" +
+      "gke_grpc_serviceb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -1986,18 +2126,18 @@ public final class Interface {
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.google.api.AnnotationsProto.getDescriptor(),
         }, assigner);
-    internal_static_GKEgRPCService_HealthCheckRequest_descriptor =
+    internal_static_GKEgRPCService_TestRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_GKEgRPCService_HealthCheckRequest_fieldAccessorTable = new
+    internal_static_GKEgRPCService_TestRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_GKEgRPCService_HealthCheckRequest_descriptor,
+        internal_static_GKEgRPCService_TestRequest_descriptor,
         new java.lang.String[] { });
-    internal_static_GKEgRPCService_HealthCheckResponse_descriptor =
+    internal_static_GKEgRPCService_TestResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_GKEgRPCService_HealthCheckResponse_fieldAccessorTable = new
+    internal_static_GKEgRPCService_TestResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_GKEgRPCService_HealthCheckResponse_descriptor,
-        new java.lang.String[] { });
+        internal_static_GKEgRPCService_TestResponse_descriptor,
+        new java.lang.String[] { "Content", });
     internal_static_GKEgRPCService_HelloWorldRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
     internal_static_GKEgRPCService_HelloWorldRequest_fieldAccessorTable = new

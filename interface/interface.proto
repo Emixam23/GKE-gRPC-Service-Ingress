@@ -12,16 +12,19 @@ option go_package = "gke_grpc_service";
 
 service GKEgRPCService {
 
+    rpc Test (TestRequest) returns (TestResponse) { option (google.api.http) = { get: "/test" }; }
     rpc HelloWorld (HelloWorldRequest) returns (HelloWorldResponse) { option (google.api.http) = { post: "/hello_world" body:"*" }; }
 
 }
 
 //
-// GCP Health Check
+// Test
 //
 
-message HealthCheckRequest {}
-message HealthCheckResponse {}
+message TestRequest {}
+message TestResponse {
+    string Content = 1;
+}
 
 //
 // Service parameters/returns data definition.

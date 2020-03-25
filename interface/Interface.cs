@@ -25,18 +25,20 @@ namespace GKEgRPCService {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cg9pbnRlcmZhY2UucHJvdG8SDkdLRWdSUENTZXJ2aWNlGhxnb29nbGUvYXBp",
-            "L2Fubm90YXRpb25zLnByb3RvIhQKEkhlYWx0aENoZWNrUmVxdWVzdCIVChNI",
-            "ZWFsdGhDaGVja1Jlc3BvbnNlIiEKEUhlbGxvV29ybGRSZXF1ZXN0EgwKBE5h",
-            "bWUYASABKAkiJQoSSGVsbG9Xb3JsZFJlc3BvbnNlEg8KB0NvbnRlbnQYASAB",
-            "KAkyfgoOR0tFZ1JQQ1NlcnZpY2USbAoKSGVsbG9Xb3JsZBIhLkdLRWdSUENT",
-            "ZXJ2aWNlLkhlbGxvV29ybGRSZXF1ZXN0GiIuR0tFZ1JQQ1NlcnZpY2UuSGVs",
-            "bG9Xb3JsZFJlc3BvbnNlIheC0+STAhEiDC9oZWxsb193b3JsZDoBKkISWhBn",
-            "a2VfZ3JwY19zZXJ2aWNlYgZwcm90bzM="));
+            "L2Fubm90YXRpb25zLnByb3RvIg0KC1Rlc3RSZXF1ZXN0Ih8KDFRlc3RSZXNw",
+            "b25zZRIPCgdDb250ZW50GAEgASgJIiEKEUhlbGxvV29ybGRSZXF1ZXN0EgwK",
+            "BE5hbWUYASABKAkiJQoSSGVsbG9Xb3JsZFJlc3BvbnNlEg8KB0NvbnRlbnQY",
+            "ASABKAky0AEKDkdLRWdSUENTZXJ2aWNlElAKBFRlc3QSGy5HS0VnUlBDU2Vy",
+            "dmljZS5UZXN0UmVxdWVzdBocLkdLRWdSUENTZXJ2aWNlLlRlc3RSZXNwb25z",
+            "ZSINgtPkkwIHEgUvdGVzdBJsCgpIZWxsb1dvcmxkEiEuR0tFZ1JQQ1NlcnZp",
+            "Y2UuSGVsbG9Xb3JsZFJlcXVlc3QaIi5HS0VnUlBDU2VydmljZS5IZWxsb1dv",
+            "cmxkUmVzcG9uc2UiF4LT5JMCESIML2hlbGxvX3dvcmxkOgEqQhJaEGdrZV9n",
+            "cnBjX3NlcnZpY2ViBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Api.AnnotationsReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::GKEgRPCService.HealthCheckRequest), global::GKEgRPCService.HealthCheckRequest.Parser, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::GKEgRPCService.HealthCheckResponse), global::GKEgRPCService.HealthCheckResponse.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GKEgRPCService.TestRequest), global::GKEgRPCService.TestRequest.Parser, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::GKEgRPCService.TestResponse), global::GKEgRPCService.TestResponse.Parser, new[]{ "Content" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GKEgRPCService.HelloWorldRequest), global::GKEgRPCService.HelloWorldRequest.Parser, new[]{ "Name" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::GKEgRPCService.HelloWorldResponse), global::GKEgRPCService.HelloWorldResponse.Parser, new[]{ "Content" }, null, null, null)
           }));
@@ -45,11 +47,11 @@ namespace GKEgRPCService {
 
   }
   #region Messages
-  public sealed partial class HealthCheckRequest : pb::IMessage<HealthCheckRequest> {
-    private static readonly pb::MessageParser<HealthCheckRequest> _parser = new pb::MessageParser<HealthCheckRequest>(() => new HealthCheckRequest());
+  public sealed partial class TestRequest : pb::IMessage<TestRequest> {
+    private static readonly pb::MessageParser<TestRequest> _parser = new pb::MessageParser<TestRequest>(() => new TestRequest());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<HealthCheckRequest> Parser { get { return _parser; } }
+    public static pb::MessageParser<TestRequest> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -62,29 +64,29 @@ namespace GKEgRPCService {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public HealthCheckRequest() {
+    public TestRequest() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public HealthCheckRequest(HealthCheckRequest other) : this() {
+    public TestRequest(TestRequest other) : this() {
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public HealthCheckRequest Clone() {
-      return new HealthCheckRequest(this);
+    public TestRequest Clone() {
+      return new TestRequest(this);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as HealthCheckRequest);
+      return Equals(other as TestRequest);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(HealthCheckRequest other) {
+    public bool Equals(TestRequest other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -125,7 +127,7 @@ namespace GKEgRPCService {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(HealthCheckRequest other) {
+    public void MergeFrom(TestRequest other) {
       if (other == null) {
         return;
       }
@@ -146,11 +148,11 @@ namespace GKEgRPCService {
 
   }
 
-  public sealed partial class HealthCheckResponse : pb::IMessage<HealthCheckResponse> {
-    private static readonly pb::MessageParser<HealthCheckResponse> _parser = new pb::MessageParser<HealthCheckResponse>(() => new HealthCheckResponse());
+  public sealed partial class TestResponse : pb::IMessage<TestResponse> {
+    private static readonly pb::MessageParser<TestResponse> _parser = new pb::MessageParser<TestResponse>(() => new TestResponse());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public static pb::MessageParser<HealthCheckResponse> Parser { get { return _parser; } }
+    public static pb::MessageParser<TestResponse> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public static pbr::MessageDescriptor Descriptor {
@@ -163,41 +165,55 @@ namespace GKEgRPCService {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public HealthCheckResponse() {
+    public TestResponse() {
       OnConstruction();
     }
 
     partial void OnConstruction();
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public HealthCheckResponse(HealthCheckResponse other) : this() {
+    public TestResponse(TestResponse other) : this() {
+      content_ = other.content_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public HealthCheckResponse Clone() {
-      return new HealthCheckResponse(this);
+    public TestResponse Clone() {
+      return new TestResponse(this);
+    }
+
+    /// <summary>Field number for the "Content" field.</summary>
+    public const int ContentFieldNumber = 1;
+    private string content_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string Content {
+      get { return content_; }
+      set {
+        content_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
-      return Equals(other as HealthCheckResponse);
+      return Equals(other as TestResponse);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public bool Equals(HealthCheckResponse other) {
+    public bool Equals(TestResponse other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
+      if (Content != other.Content) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
+      if (Content.Length != 0) hash ^= Content.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -211,6 +227,10 @@ namespace GKEgRPCService {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
+      if (Content.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Content);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -219,6 +239,9 @@ namespace GKEgRPCService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
+      if (Content.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Content);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -226,9 +249,12 @@ namespace GKEgRPCService {
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public void MergeFrom(HealthCheckResponse other) {
+    public void MergeFrom(TestResponse other) {
       if (other == null) {
         return;
+      }
+      if (other.Content.Length != 0) {
+        Content = other.Content;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -241,6 +267,10 @@ namespace GKEgRPCService {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 10: {
+            Content = input.ReadString();
+            break;
+          }
         }
       }
     }
